@@ -23,7 +23,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("x", "<leader>p", [["_dP]])         --paste to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- delete to void register
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- replace the word you are on
 vim.keymap.set("n", "<leader>s",

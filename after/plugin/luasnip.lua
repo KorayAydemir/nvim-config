@@ -1,8 +1,8 @@
 local ls = require "luasnip"
 local types = require("luasnip.util.types")
+require("luasnip.loaders.from_vscode").lazy_load()
 
-vim.keymap.set({ "i", "s" }, "<Tab>", function() ls.jump(1) end, { desc = "LuaSnip forward jump" })
-vim.keymap.set({ "i", "s" }, "<S-Tab>", function() ls.jump(-1) end, { desc = "LuaSnip backward jump" })
+
 
 ls.config.set_config {
     -- This tells LuaSnip to remember to keep around the last snippet.

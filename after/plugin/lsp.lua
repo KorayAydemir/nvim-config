@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero')
+local ls = require "luasnip"
 lsp.preset('recommended')
 
 -- Fix Undefined global 'vim'
@@ -20,24 +21,36 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     lsp.buffer_autoformat()
+    vim.keymap.set({ "i", "s" }, "<Tab>", function() ls.jump(1) end, { desc = "LuaSnip forward jump" })
+    vim.keymap.set({ "i", "s" }, "<S-Tab>", function() ls.jump(-1) end, { desc = "LuaSnip backward jump" })
 end)
+
+lsp.setup()
 
 local cmp = require('cmp')
 
 cmp.setup({
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
+    sources = {
+        { name = 'luasnip', keyword_length = 2 },
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'buffer',  keyword_length = 3 },
+    }
 })
 
-
-
-
-lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true
 })
+
 
 
 

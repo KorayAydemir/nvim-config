@@ -17,6 +17,7 @@ return require('packer').startup(function(use)
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('nvim-treesitter/nvim-treesitter-context')
 
 
     use 'ThePrimeagen/harpoon'
@@ -26,7 +27,6 @@ return require('packer').startup(function(use)
     use 'mrjones2014/nvim-ts-rainbow'
     use 'windwp/nvim-ts-autotag'
 
-    use 'SirVer/ultisnips'
     use 'lervag/vimtex'
 
     -- LSP

@@ -41,6 +41,6 @@ vim.opt.colorcolumn = "80"
 
 -- do not continue comment lines automatically
 --vim.cmd[[autocmd BufNewFile,BufRead * setlocal formatoptions-=cro]]
-vim.cmd[[autocmd FileType * set formatoptions-=cro]]
+vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 
 --vim.opt.shortmess:append("c")

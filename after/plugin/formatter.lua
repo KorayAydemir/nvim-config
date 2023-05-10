@@ -37,7 +37,7 @@ require("formatter").setup({
 			function()
 				return {
 					exe = "prettierd",
-					args = { vim.api.nvim_buf_get_name(0) },
+					args = { vim.api.nvim_buf_get_name(0), "--tab-width=4" },
 					stdin = true,
 				}
 			end,

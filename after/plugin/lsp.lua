@@ -62,7 +62,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
     vim.keymap.set({ "i", "s" }, "<S-Tab>", function() ls.jump(-1) end, { desc = "LuaSnip backward jump" })
-    lsp.buffer_autoformat()
+    -- we use prettierd lsp.buffer_autoformat()
 end)
 
 

@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
     }
     use('hrsh7th/cmp-nvim-lua')
     use('rafamadriz/friendly-snippets')
+    use('mhartington/formatter.nvim')
 
 
 

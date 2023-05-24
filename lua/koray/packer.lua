@@ -60,9 +60,17 @@ return require("packer").startup(function(use)
 
 	use("norcalli/nvim-colorizer.lua")
 
+	use({
+		"giusgad/pets.nvim",
+		requires = {
+			"giusgad/hologram.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+	})
+
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	require("rose-pine").setup({
-		disable_background = true,
+		disable_background = true, -- this is what gives transparency
 		disable_float_background = true,
 	})
 	vim.cmd("colorscheme rose-pine")

@@ -1,7 +1,8 @@
 local util = require("formatter.util")
 
 require("formatter").setup({
-	logging = false,
+	logging = true,
+	log_level = vim.log.levels.WARN,
 	filetype = {
 		lua = {
 			-- "formatter.filetypes.lua" defines default configurations for the
@@ -28,6 +29,18 @@ require("formatter").setup({
 				return {
 					exe = "rustfmt",
 					args = {},
+					stdin = true,
+				}
+			end,
+		},
+		tex = {
+			function()
+				return {
+					exe = "latexindent",
+					args = {
+						"-g",
+						"/dev/null",
+					},
 					stdin = true,
 				}
 			end,

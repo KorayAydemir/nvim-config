@@ -5,7 +5,7 @@ local ls = require("luasnip")
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-lsp.ensure_installed({ "tsserver", "eslint", "lua_ls", "rust_analyzer", "bashls", "stylua" })
+lsp.ensure_installed({ "tsserver", "eslint", "lua_ls", "rust_analyzer", "bashls" })
 
 local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

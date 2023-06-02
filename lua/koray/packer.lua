@@ -68,6 +68,8 @@ return require("packer").startup(function(use)
 		},
 	})
 
+	use("nullchilly/fsread.nvim")
+
 	use({ "rose-pine/neovim", as = "rose-pine" })
 	require("rose-pine").setup({
 		disable_background = true, -- this is what gives transparency

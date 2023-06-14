@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
 	})
 	use("hrsh7th/cmp-nvim-lua")
 	use("rafamadriz/friendly-snippets")
+	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 	use("mhartington/formatter.nvim")
 	use("zbirenbaum/copilot.lua")
 

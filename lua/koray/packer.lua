@@ -59,6 +59,8 @@ return require("packer").startup(function(use)
 	use("mhartington/formatter.nvim")
 	use("zbirenbaum/copilot.lua")
 
+  use("folke/zen-mode.nvim")
+
 	use("norcalli/nvim-colorizer.lua")
 
 	use({

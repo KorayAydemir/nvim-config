@@ -64,7 +64,8 @@ require("formatter").setup({
 	},
 })
 
-vim.cmd([[augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-augroup END]])
+-- auto format on save
+-- vim.cmd([[augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost * FormatWrite
+-- augroup END]])

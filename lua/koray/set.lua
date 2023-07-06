@@ -31,6 +31,8 @@ vim.opt.signcolumn = "yes"
 -- netrw is in. 1 means they apply in the pwd.
 vim.g.netrw_keepdir = 0
 vim.opt.autochdir = false
+vim.g.netrw_winsize = 30
+vim.g.netrw_browse_split = 0
 
 vim.opt.termguicolors = true
 vim.cmd("set numberwidth=1")
@@ -39,8 +41,9 @@ vim.opt.updatetime = 1000
 
 vim.opt.colorcolumn = "80"
 
+-- "I" to display the banner.
+vim.g.netrw_banner= 0
+
 -- do not continue comment lines automatically
---vim.cmd[[autocmd BufNewFile,BufRead * setlocal formatoptions-=cro]]
 vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 
---vim.opt.shortmess:append("c")

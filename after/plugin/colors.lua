@@ -11,3 +11,4 @@ ColorMyPencils()
 
 -- line numbers white for visibility
 vim.cmd([[hi LineNr guibg=none guifg=none]])
+vim.cmd([[hi Comment guifg='red' ]])

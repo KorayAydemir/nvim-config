@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 -- Lex opens in pwd dir, Vex opens in the current file's dir
-vim.keymap.set("n", "<leader>pv", vim.cmd.Lex);
-vim.keymap.set("n", "<leader>pc", vim.cmd.Vex);
+vim.keymap.set("n", "<leader>pc", vim.cmd.Lex);
+vim.keymap.set("n", "<leader>pv", vim.cmd.Vex);
 -- set current dir as the current file.
 vim.keymap.set("n", "<leader>cd", ":cd %:h<CR>");
 

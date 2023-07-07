@@ -32,7 +32,7 @@ vim.opt.signcolumn = "yes"
 vim.g.netrw_keepdir = 0
 vim.opt.autochdir = false
 vim.g.netrw_winsize = 30
-vim.g.netrw_browse_split = 0
+vim.g.netrw_browse_split = 4
 
 vim.opt.termguicolors = true
 vim.cmd("set numberwidth=1")

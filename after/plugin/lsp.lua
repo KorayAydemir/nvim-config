@@ -2,6 +2,8 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 local ls = require("luasnip")
 
+local telescope = require("telescope.builtin")
+
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
@@ -72,7 +74,7 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.code_action()
 	end, opts)
 	vim.keymap.set("n", "<leader>vrr", function()
-		vim.lsp.buf.references()
+		telescope.lsp_references()
 	end, opts)
 	vim.keymap.set("n", "<leader>vrn", function()
 		vim.lsp.buf.rename()

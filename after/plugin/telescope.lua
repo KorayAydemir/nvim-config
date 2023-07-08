@@ -1,17 +1,104 @@
+local builtin = require("telescope.builtin")
+local action_layout = require("telescope.actions.layout")
+local dropdown = require("telescope.themes").get_dropdown({})
+
 require("telescope").setup({
 	defaults = {
+        file_ignore_patterns = { ".git" },
 		layout_strategy = "vertical",
 		layout_config = {
-			vertical = { width = 0.95 },
+			vertical = { width = 0.99, height = 0.96 },
+		},
+        mappings = {
+            i = {
+                ["?"] = action_layout.toggle_preview,
+                -- toggle dropdown theme
+
+            },
+        },
+	},
+	pickers = {
+		find_files = {
+			hidden = true,
+		},
+		resume = {
+			hidden = true,
+		},
+		git_files = {
+			hidden = true,
+		},
+		live_grep = {
+			hidden = true,
+		},
+		grep_string = {
+			hidden = true,
 		},
 	},
 })
---require('telescope').load_extension('fzf')
 
-local builtin = require("telescope.builtin")
+
+-- Search string in :h
+vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+
+-- List previously open files
+vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
+
+-- Open telescope from where you left off
+vim.keymap.set("n", "<C-p>", builtin.resume, {})
+
+--================== FILE SEARCHING ==================
+-- List files in current working directory, respects .gitignore
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
-vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>ps", function()
+-- Make it in small window
+vim.keymap.set("n", "<leader>ff", function()
+	builtin.find_files(dropdown)
+end)
+-- List only staged files, respects .gitignore
+vim.keymap.set("n", "<C-n>", builtin.git_files, {})
+-- Smaller
+vim.keymap.set("n", "<C-m>", function()
+	builtin.git_files(dropdown)
+end)
+--================== FILE SEARCHING ==================
+
+--================== GREP SEARCHING ==================
+-- Search input in current working directory, respects .gitignore
+vim.keymap.set("n", "<leader>gs", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
-vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+-- Live search in current working directory, respects .gitignore
+vim.keymap.set("n", "<leader>gl", builtin.live_grep, {})
+-- mini window
+vim.keymap.set("n", "<leader>mgl", function()
+	builtin.live_grep(dropdown)
+end)
+--================== GREP SEARCHING ==================
+
+--================== GIT SEARCHING ==================
+-- Lists current changes per file with diff preview and add action. (
+vim.keymap.set("n", "<leader>gst", builtin.git_status, {})
+
+--
+-- List all branches with log preview,
+-- checkout action <cr>,
+-- track action <C-t>,
+-- rebase action<C-r>,
+-- create action <C-a>,
+-- switch action <C-s>,
+-- delete action <C-d>,
+-- merge action <C-y>
+vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
+-- List buffer's git commits with diff preview and check them out on <cr>
+vim.keymap.set("n", "<leader>gbr", builtin.git_bcommits, {})
+
+--
+-- Lists git commits with diff preview,
+-- checkout action <cr>,
+-- reset mixed <C-r>m,
+-- reset soft <C-r>s,
+-- reset hard <C-r>h
+vim.keymap.set("n", "<leader>gbr", builtin.git_commits, {})
+--
+
+vim.keymap.set("n", "<leader>planets", builtin.planets, {})
+vim.keymap.set("n", "<leader>tp", builtin.builtin, {})

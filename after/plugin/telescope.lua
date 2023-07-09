@@ -102,3 +102,4 @@ vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
 
 vim.keymap.set("n", "<leader>planets", builtin.planets, {})
 vim.keymap.set("n", "<leader>tp", builtin.builtin, {})
+vim.keymap.set("n", "<leader>ic", builtin.lsp_incoming_calls, {})

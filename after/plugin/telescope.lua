@@ -63,7 +63,7 @@ end)
 
 --================== GREP SEARCHING ==================
 -- Search input in current working directory, respects .gitignore
-vim.keymap.set("n", "<leader>gs", function()
+vim.keymap.set("n", "<leader>gr", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 -- Live search in current working directory, respects .gitignore
@@ -97,7 +97,7 @@ vim.keymap.set("n", "<leader>gbr", builtin.git_bcommits, {})
 -- reset mixed <C-r>m,
 -- reset soft <C-r>s,
 -- reset hard <C-r>h
-vim.keymap.set("n", "<leader>gbr", builtin.git_commits, {})
+vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
 --
 
 vim.keymap.set("n", "<leader>planets", builtin.planets, {})

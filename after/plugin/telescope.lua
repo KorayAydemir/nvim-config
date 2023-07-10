@@ -1,25 +1,26 @@
 local builtin = require("telescope.builtin")
 local action_layout = require("telescope.actions.layout")
-local dropdown = require("telescope.themes").get_dropdown({})
+local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
 
 require("telescope").setup({
 	defaults = {
-        file_ignore_patterns = { ".git" },
+		file_ignore_patterns = { ".git" },
 		layout_strategy = "vertical",
 		layout_config = {
 			vertical = { width = 0.99, height = 0.96 },
 		},
-        mappings = {
-            i = {
-                ["?"] = action_layout.toggle_preview,
-                -- toggle dropdown theme
-
-            },
-        },
+		mappings = {
+			i = {
+				["?"] = action_layout.toggle_preview,
+				-- toggle dropdown theme
+			},
+		},
 	},
 	pickers = {
+        -- pickers currently do not work for some reason
 		find_files = {
 			hidden = true,
+			folllow = true,
 		},
 		resume = {
 			hidden = true,
@@ -36,7 +37,6 @@ require("telescope").setup({
 	},
 })
 
-
 -- Search string in :h
 vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
 
@@ -48,7 +48,9 @@ vim.keymap.set("n", "<C-p>", builtin.resume, {})
 
 --================== FILE SEARCHING ==================
 -- List files in current working directory, respects .gitignore
-vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+vim.keymap.set("n", "<leader>pf", function()
+	builtin.find_files({ hidden = true, follow = true })
+end, {})
 -- Make it in small window
 vim.keymap.set("n", "<leader>ff", function()
 	builtin.find_files(dropdown)
@@ -88,8 +90,6 @@ vim.keymap.set("n", "<leader>gst", builtin.git_status, {})
 -- delete action <C-d>,
 -- merge action <C-y>
 vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
--- List buffer's git commits with diff preview and check them out on <cr>
-vim.keymap.set("n", "<leader>gbr", builtin.git_bcommits, {})
 
 --
 -- Lists git commits with diff preview,
@@ -98,6 +98,8 @@ vim.keymap.set("n", "<leader>gbr", builtin.git_bcommits, {})
 -- reset soft <C-r>s,
 -- reset hard <C-r>h
 vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
+-- List buffer's git commits with diff preview and check them out on <cr>
+vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, {})
 --
 
 vim.keymap.set("n", "<leader>planets", builtin.planets, {})

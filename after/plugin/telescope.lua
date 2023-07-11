@@ -105,3 +105,5 @@ vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, {})
 vim.keymap.set("n", "<leader>planets", builtin.planets, {})
 vim.keymap.set("n", "<leader>tp", builtin.builtin, {})
 vim.keymap.set("n", "<leader>ic", builtin.lsp_incoming_calls, {})
+-- marks
+vim.keymap.set("n", "<leader>tm", builtin.marks, {})

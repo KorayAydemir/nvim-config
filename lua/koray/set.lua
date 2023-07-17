@@ -43,6 +43,8 @@ vim.opt.updatetime = 1000
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.ignorecase = true
+
 -- "I" to display the banner.
 vim.g.netrw_banner= 0
 

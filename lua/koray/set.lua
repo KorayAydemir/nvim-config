@@ -27,9 +27,11 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
--- 0 means :! commands you use like :!mkdir in netrw apply in the curr dir
--- netrw is in. 1 means they apply in the pwd.
-vim.g.netrw_keepdir = 0
+-- 0 means netrw sets the current folder as cwd, only for netrw's window.
+-- 1 means netrw does not touch cwd. Meaning !touch will still create the file...
+-- in the dir where you first opened vim in, instead of in the folder netrw is...
+-- currently browsing.
+vim.g.netrw_keepdir = 1
 vim.opt.autochdir = false
 vim.g.netrw_winsize = 30
 vim.g.netrw_browse_split = 4

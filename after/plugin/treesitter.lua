@@ -23,14 +23,11 @@ require("nvim-treesitter.configs").setup({
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
-	rainbow = {
-		enable = true,
-		extended_mode = true,
-		max_file_lines = 1000,
-		colors = {
-			"#f5302a",
-			"#f5e236",
-			"#f57b11",
-		},
-	},
+    rainbow = {
+    enable = true,
+    -- Which query to use for finding delimiters
+    query = 'rainbow-parens',
+    -- Highlight the entire buffer all at once
+    strategy = require('ts-rainbow').strategy.global,
+  }
 })

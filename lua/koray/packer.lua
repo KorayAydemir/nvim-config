@@ -24,8 +24,8 @@ return require("packer").startup(function(use)
 	use("ThePrimeagen/harpoon")
 	use("tpope/vim-fugitive")
 	use("mbbill/undotree")
+    use("HiPhish/nvim-ts-rainbow2")
 
-	use("mrjones2014/nvim-ts-rainbow")
 	use("windwp/nvim-ts-autotag")
 
 	use("lervag/vimtex")

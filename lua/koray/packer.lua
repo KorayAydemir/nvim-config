@@ -21,10 +21,11 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-context")
 
+    use("HiPhish/rainbow-delimiters.nvim")
+
 	use("ThePrimeagen/harpoon")
 	use("tpope/vim-fugitive")
 	use("mbbill/undotree")
-    use("HiPhish/nvim-ts-rainbow2")
 
 	use("windwp/nvim-ts-autotag")
 
@@ -66,15 +67,6 @@ return require("packer").startup(function(use)
 	use("folke/twilight.nvim")
 
 	use("norcalli/nvim-colorizer.lua")
-
-	use({
-		"giusgad/pets.nvim",
-		requires = {
-			"giusgad/hologram.nvim",
-			"MunifTanjim/nui.nvim",
-		},
-	})
-
 	use("nullchilly/fsread.nvim")
 
 	use({ "rose-pine/neovim", as = "rose-pine" })

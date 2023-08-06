@@ -56,10 +56,10 @@ return require("packer").startup(function(use)
 			{ "saadparwaiz1/cmp_luasnip" }, -- Required
 		},
 	})
-
-	use("folke/neodev.nvim")
+    use("folke/neodev.nvim")
 	use("hrsh7th/cmp-nvim-lua")
 	use("rafamadriz/friendly-snippets")
+
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 	use("mhartington/formatter.nvim")
 	use("zbirenbaum/copilot.lua")

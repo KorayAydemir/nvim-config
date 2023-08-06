@@ -21,10 +21,12 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/nvim-treesitter-context")
 
+	use("ThePrimeagen/harpoon")
+
     use("HiPhish/rainbow-delimiters.nvim")
 
-	use("ThePrimeagen/harpoon")
 	use("tpope/vim-fugitive")
+
 	use("mbbill/undotree")
 
 	use("windwp/nvim-ts-autotag")
@@ -65,7 +67,6 @@ return require("packer").startup(function(use)
 
 	use("folke/zen-mode.nvim")
 	use("folke/twilight.nvim")
-
 	use("norcalli/nvim-colorizer.lua")
 	use("nullchilly/fsread.nvim")
 

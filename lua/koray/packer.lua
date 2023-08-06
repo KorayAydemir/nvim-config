@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
 	use({ "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" })
 	use("mhartington/formatter.nvim")
 	use("zbirenbaum/copilot.lua")
-	use("tveskag/nvim-blame-line")
+    use("f-person/git-blame.nvim")
 
 	use("folke/zen-mode.nvim")
 	use("folke/twilight.nvim")

@@ -58,7 +58,7 @@ end)
 -- List only staged files, respects .gitignore
 vim.keymap.set("n", "<C-n>", builtin.git_files, {})
 -- Smaller
-vim.keymap.set("n", "<C-m>", function()
+vim.keymap.set("n", "<C-j>", function()
 	builtin.git_files(dropdown)
 end)
 --================== FILE SEARCHING ==================

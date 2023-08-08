@@ -65,6 +65,7 @@ return require("packer").startup(function(use)
 	use("zbirenbaum/copilot.lua")
     use("f-person/git-blame.nvim")
 
+
 	use("folke/zen-mode.nvim")
 	use("folke/twilight.nvim")
 	use("norcalli/nvim-colorizer.lua")

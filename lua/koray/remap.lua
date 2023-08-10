@@ -28,6 +28,8 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>fmk", "<cmd>CellularAutomaton game_of_life<CR>")
 
+vim.keymap.set("t", "<C-[>", "<C-\\><C-N>", {})
+
 ---- telescope
 --nnoremap("<leader>pw", function()
 --  require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }

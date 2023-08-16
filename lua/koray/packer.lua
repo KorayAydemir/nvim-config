@@ -23,8 +23,6 @@ return require("packer").startup(function(use)
 
 	use("ThePrimeagen/harpoon")
 
-    use("HiPhish/rainbow-delimiters.nvim")
-
 	use("tpope/vim-fugitive")
 
 	use("mbbill/undotree")

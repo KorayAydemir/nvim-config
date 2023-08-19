@@ -17,6 +17,7 @@ local function gotoTerminal(tid, save_buf)
     saved_buffer = save_buf and vim.fn.bufnr('%') or saved_buffer
     term.gotoTerminal(tid);
     last_term_idx = tid
+    vim.api.nvim_command('startinsert')
 end
 
 local function isInTerminal()
@@ -40,5 +41,5 @@ local function toggleTerminal(open, other)
     end
 end
 
-vim.keymap.set("n", "<C-0>", function() toggleTerminal(1,2) end)
-vim.keymap.set("n", "<C-9>", function() toggleTerminal(2,1) end)
+vim.keymap.set({"n","t"}, "<C-0>", function() toggleTerminal(1,2) end)
+vim.keymap.set({"n","t"}, "<C-9>", function() toggleTerminal(2,1) end)

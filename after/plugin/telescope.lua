@@ -49,12 +49,12 @@ vim.keymap.set("n", "<C-p>", builtin.resume, {})
 --================== FILE SEARCHING ==================
 -- List files in current working directory, respects .gitignore
 vim.keymap.set("n", "<leader>pf", function()
-	builtin.find_files({ hidden = true, follow = true })
-end, {})
--- Make it in small window
-vim.keymap.set("n", "<leader>ff", function()
 	builtin.find_files(dropdown)
 end)
+-- Make it in small window
+vim.keymap.set("n", "<leader>ff", function()
+	builtin.find_files({ hidden = true, follow = true })
+end, {})
 -- List only staged files, respects .gitignore
 vim.keymap.set("n", "<C-n>", builtin.git_files, {})
 -- Smaller

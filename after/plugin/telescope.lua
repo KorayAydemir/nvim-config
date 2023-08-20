@@ -16,25 +16,6 @@ require("telescope").setup({
 			},
 		},
 	},
-	pickers = {
-        -- pickers currently do not work for some reason
-		find_files = {
-			hidden = true,
-			folllow = true,
-		},
-		resume = {
-			hidden = true,
-		},
-		git_files = {
-			hidden = true,
-		},
-		live_grep = {
-			hidden = true,
-		},
-		grep_string = {
-			hidden = true,
-		},
-	},
 })
 
 -- Search string in :h
@@ -47,17 +28,17 @@ vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
 vim.keymap.set("n", "<C-p>", builtin.resume, {})
 
 --================== FILE SEARCHING ==================
--- List files in current working directory, respects .gitignore
+-- List files in cwd, respects .gitignore
 vim.keymap.set("n", "<leader>pf", function()
 	builtin.find_files(dropdown)
 end)
--- Make it in small window
+-- Small window 
 vim.keymap.set("n", "<leader>ff", function()
 	builtin.find_files({ hidden = true, follow = true })
 end, {})
--- List only staged files, respects .gitignore
+-- List staged files, respects .gitignore
 vim.keymap.set("n", "<C-n>", builtin.git_files, {})
--- Smaller
+-- Small window
 vim.keymap.set("n", "<C-j>", function()
 	builtin.git_files(dropdown)
 end)

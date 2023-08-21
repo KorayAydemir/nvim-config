@@ -1,3 +1,3 @@
 require('koray.set')
 require('koray.remap')
-require('koray.packer')
+require('koray.lazy')

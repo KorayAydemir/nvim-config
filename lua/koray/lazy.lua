@@ -46,14 +46,17 @@ local plugins = {
 	{"norcalli/nvim-colorizer.lua"},
 	{"nullchilly/fsread.nvim"},
 
-    { 'rose-pine/neovim', name = 'rose-pine' },
+    { 'rose-pine/neovim', name = 'rose-pine', config = {
+        disable_background=true, 
+        disable_float_background=true} 
+    },
     {"dotsilas/darcubox-nvim"},
 
 	{"andweeb/presence.nvim"},
 
 	{"eandrju/cellular-automaton.nvim"},
 
-    {"ggandor/leap.nvim"},
+    {"hrsh7th/cmp-nvim-lua"}
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -70,9 +73,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(plugins)
-
-	--use("hrsh7th/cmp-nvim-lua") -- look for it
-require("rose-pine").setup({
-	disable_background = true,
-	disable_float_background = true,
-})

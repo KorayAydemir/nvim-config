@@ -74,7 +74,8 @@ return require("packer").startup(function(use)
 		disable_background = true, -- this is what gives transparency
 		disable_float_background = true,
 	})
-	vim.cmd("colorscheme rose-pine")
+
+    use("dotsilas/darcubox-nvim")
 
 	use("andweeb/presence.nvim")
 

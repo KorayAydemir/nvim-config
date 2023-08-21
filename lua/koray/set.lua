@@ -51,3 +51,4 @@ vim.g.netrw_banner= 0
 -- do not continue comment lines automatically
 vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 
+vim.opt.showmode = false

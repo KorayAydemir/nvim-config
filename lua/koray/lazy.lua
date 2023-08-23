@@ -3,19 +3,19 @@ local plugins = {
         'nvim-telescope/telescope.nvim', tag = '0.1.2',
           dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', event="VeryLazy" },
 
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     { 'nvim-treesitter/nvim-treesitter-context' },
 
 
     {"ThePrimeagen/harpoon"},
-    {"tpope/vim-fugitive"},
-    {"mbbill/undotree"},
-    {"windwp/nvim-ts-autotag"},
-	{"lervag/vimtex"},
+    {"tpope/vim-fugitive", event="VeryLazy"},
+    {"mbbill/undotree", event="VeryLazy"},
+    {"windwp/nvim-ts-autotag", event="VeryLazy"},
+	{"lervag/vimtex", event="VeryLazy"},
 
-    {"eandrju/cellular-automaton.nvim"},
+    { "eandrju/cellular-automaton.nvim", event="VeryLazy" },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -32,31 +32,32 @@ local plugins = {
 		  {'saadparwaiz1/cmp_luasnip'}, -- Required
         }
     },
-    {"folke/neodev.nvim"},
+    {"folke/neodev.nvim", event="VeryLazy"},
 
-	{"rafamadriz/friendly-snippets"},
+	{"rafamadriz/friendly-snippets", event="VeryLazy"},
 
 	{ "folke/trouble.nvim", dependencies = "kyazdani42/nvim-web-devicons" },
 	{"mhartington/formatter.nvim"},
 	{"zbirenbaum/copilot.lua"},
-    {"f-person/git-blame.nvim"},
+    {"f-person/git-blame.nvim", event="VeryLazy"},
 
 	{"folke/zen-mode.nvim"},
-	{"folke/twilight.nvim"},
+	{"folke/twilight.nvim", event="VeryLazy"},
 	{"norcalli/nvim-colorizer.lua"},
-	{"nullchilly/fsread.nvim"},
+	{"nullchilly/fsread.nvim", event="VeryLazy"},
 
     { 'rose-pine/neovim', name = 'rose-pine', config = {
-        disable_background=true, 
-        disable_float_background=true} 
+            disable_background=true,
+            disable_float_background=true
+        }
     },
-    {"dotsilas/darcubox-nvim"},
+    {"dotsilas/darcubox-nvim", event="VeryLazy"},
 
-	{"andweeb/presence.nvim"},
+	{"andweeb/presence.nvim", event="VeryLazy"},
 
 	{"eandrju/cellular-automaton.nvim"},
 
-    {"hrsh7th/cmp-nvim-lua"}
+    {"hrsh7th/cmp-nvim-lua", event="VeryLazy"}
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -72,4 +73,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(plugins)
+require("lazy").setup(plugins,{
+    defaults = {
+      lazy = true, -- should plugins be lazy-loaded?
+    },
+  }
+)

@@ -41,7 +41,7 @@ vim.cmd("set numberwidth=1")
 
 vim.opt.updatetime = 1000
 
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 
 vim.opt.ignorecase = true
 

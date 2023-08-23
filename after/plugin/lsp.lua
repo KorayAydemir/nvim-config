@@ -47,6 +47,15 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "buffer", keyword_length = 3 },
 	},
+    enabled = function ()
+            local context = require 'cmp.config.context'
+            if vim.api.nvim_get_mode().mode == 'c' then
+              return true
+            else
+              return not context.in_treesitter_capture("comment")
+                and not context.in_syntax_group("Comment")
+        end
+    end
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -85,6 +94,8 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
 		ls.jump(-1)
 	end, { desc = "LuaSnip backward jump" })
+    vim.keymap.set('n', '<c-w>d', ':vs<cr>:lua vim.lsp.buf.definition()<cr>zt')
+
 	-- we use prettierd lsp.buffer_autoformat()
 end)
 

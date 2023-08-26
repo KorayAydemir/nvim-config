@@ -75,7 +75,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(plugins,{
     defaults = {
-      lazy = true, -- should plugins be lazy-loaded?
+      lazy = false, -- when true nvim cmp breaks for now, will learn about it later 
     },
   }
 )

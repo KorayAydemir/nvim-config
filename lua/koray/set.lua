@@ -35,6 +35,8 @@ vim.g.netrw_keepdir = 1
 vim.opt.autochdir = false
 vim.g.netrw_winsize = 30
 vim.g.netrw_browse_split = 4
+-- "I" to display the banner.
+vim.g.netrw_banner= 0
 
 vim.opt.termguicolors = true
 vim.cmd("set numberwidth=1")
@@ -44,9 +46,6 @@ vim.opt.updatetime = 1000
 -- vim.opt.colorcolumn = "80"
 
 vim.opt.ignorecase = true
-
--- "I" to display the banner.
-vim.g.netrw_banner= 0
 
 -- do not continue comment lines automatically
 vim.cmd [[autocmd FileType * set formatoptions-=cro]]

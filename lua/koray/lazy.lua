@@ -49,9 +49,13 @@ local plugins = {
     { 'rose-pine/neovim', name = 'rose-pine', config = {
             disable_background=true,
             disable_float_background=true
-        }
-    },
+    }},
     {"dotsilas/darcubox-nvim", event="VeryLazy"},
+    {"maxmx03/FluoroMachine.nvim", config = {
+        glow = true,
+        theme = 'delta', -- delta, fluoromachine, retrowave
+        transparent = 'all',
+    }},
 
 	{"andweeb/presence.nvim", event="VeryLazy"},
 

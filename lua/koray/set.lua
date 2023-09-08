@@ -51,3 +51,4 @@ vim.opt.ignorecase = true
 vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 
 vim.opt.showmode = false
+vim.opt.autoread = true

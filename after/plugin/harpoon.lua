@@ -46,5 +46,5 @@ local function toggleTerminal(open, other)
     end
 end
 
-vim.keymap.set({"n","t"}, "<C-0>", function() toggleTerminal(1,2) end)
-vim.keymap.set({"n","t"}, "<C-9>", function() toggleTerminal(2,1) end)
+vim.keymap.set({"n","t"}, "<leader>0", function() toggleTerminal(1,2) end)
+vim.keymap.set({"n","t"}, "<leader>9", function() toggleTerminal(2,1) end)

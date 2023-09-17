@@ -7,12 +7,16 @@ require("telescope").setup({
 		file_ignore_patterns = { ".git" },
 		layout_strategy = "vertical",
 		layout_config = {
-			vertical = { width = 0.99, height = 0.96 },
+			vertical = {
+                width = 0.99,
+                height = 0.96,
+                preview_height = 0.5,
+                preview_cutoff = 0,
+            },
 		},
 		mappings = {
 			i = {
 				["?"] = action_layout.toggle_preview,
-				-- toggle dropdown theme
 			},
 		},
 	},

@@ -11,5 +11,5 @@ require 'treesitter-context'.setup {
     separator = nil,
     zindex = 20, -- The Z-index of the context window
 }
---vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline = true, sp = "Grey", })
-vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = "#2a2640" })
+vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { underline = true, sp = "Grey", })
+--vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = "#fff640" })

@@ -60,7 +60,10 @@ local plugins = {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = {
-			disable_background = true,
+            -- usage 'main'|'moon'|'dawn'
+            variant = 'auto',
+            dark_variant = 'main',
+			disable_background = false,
 			disable_float_background = true,
 		},
 	},
@@ -73,6 +76,8 @@ local plugins = {
 			transparent = "all",
 		},
 	},
+    {"vimpostor/vim-lumen"},
+
 	-----------------------------------------------------------------
 
 	---- extras ----

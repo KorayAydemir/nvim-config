@@ -5,14 +5,13 @@ function ColorMyPencils(color)
 end
 
 ColorMyPencils("rose-pine")
+--vim.opt.bg='light'
 -- options:
 -- fluoromachine ( also has 3 more options in lazy.lua ) 
 -- rose-pine
 -- darcubox
 ----------------
 
--- line numbers white for visibility
---vim.cmd([[hi LineNr guibg=none guifg=none]])
 vim.cmd([[hi Comment guifg='red' ]])
 
 -- Blame line

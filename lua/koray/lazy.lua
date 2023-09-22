@@ -65,17 +65,20 @@ local plugins = {
             dark_variant = 'main',
 			disable_background = false,
 			disable_float_background = true,
-		},
+            highlight_groups = {
+		        Comment = { fg = 'red' }
+		    }
+        }
 	},
-	{ "dotsilas/darcubox-nvim", event = "VeryLazy" },
-	{
-		"maxmx03/FluoroMachine.nvim",
-		config = {
-			glow = true,
-			theme = "fluoromachine", -- delta, fluoromachine, retrowave
-			transparent = "all",
-		},
-	},
+	--{ "dotsilas/darcubox-nvim", event = "VeryLazy" },
+	--{
+	--	"maxmx03/FluoroMachine.nvim",
+	--	config = {
+	--		glow = true,
+	--		theme = "fluoromachine", -- delta, fluoromachine, retrowave
+	--		transparent = "all",
+	--	},
+	--},
     {"vimpostor/vim-lumen"},
 
 	-----------------------------------------------------------------

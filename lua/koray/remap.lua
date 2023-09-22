@@ -28,3 +28,13 @@ vim.keymap.set("n", "<leader>rain", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>life", "<cmd>CellularAutomaton game_of_life<CR>")
 
 vim.keymap.set("t", "<C-[>", "<C-\\><C-N>", {})
+
+--https://stackoverflow.com/a/17096082
+-- relative path
+vim.keymap.set("n", "<leader>path", "<cmd>:let @+=@%<CR>")
+
+-- full path
+--:let @+ = expand("%:p")
+
+-- just filename
+--:let @+ = expand("%:t")

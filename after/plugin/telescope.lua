@@ -3,10 +3,6 @@ local action_layout = require("telescope.actions.layout")
 local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
 
 --require("telescope").setup {
---  defaults = {
---    wrap_results = true,
---    sorting_strategy = "ascending"
---  },
 --  pickers = {
 --    oldfiles = {
 --      initial_mode = "normal"

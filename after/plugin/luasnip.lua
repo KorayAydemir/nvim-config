@@ -16,8 +16,6 @@ ls.config.set_config({
 	enable_autosnippets = true,
 
 	-- Crazy highlights!!
-	-- #vid3
-	-- ext_opts = nil,
 	ext_opts = {
 		[types.choiceNode] = {
 			active = {

@@ -51,9 +51,10 @@ require("formatter").setup({
 				return {
 					exe = "prettierd",
 					args = {
-						"--tab-width=4",
-						"--print-width=80",
-						"--plugin=prettier-plugin-tailwindcss",
+                        -- configure prettier in project config file
+						--"--tab-width=4",
+						--"--print-width=90",
+						--"--plugin=prettier-plugin-tailwindcss",
 						vim.api.nvim_buf_get_name(0),
 					},
 					stdin = true,
@@ -63,6 +64,10 @@ require("formatter").setup({
 		-- other formatters ...
 	},
 })
+
+vim.keymap.set("n", "<leader>fr", function()
+    vim.cmd("FormatWrite")
+end, { silent = true })
 
 -- auto format on save
 -- vim.cmd([[augroup FormatAutogroup

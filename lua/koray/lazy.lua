@@ -23,30 +23,24 @@ local plugins = {
 	-----------------------------------------------------------------
 
 	---- LSP ----
-	{ "hrsh7th/cmp-nvim-lua" },
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v2.x",
-		dependencies = {
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
 
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{
-				"L3MON4D3/LuaSnip",
-				dependencies = { "rafamadriz/friendly-snippets" },
-			},
-			{ "saadparwaiz1/cmp_luasnip" },
-		},
-	},
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+	{ "hrsh7th/cmp-nvim-lua" },
+
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+    },
+    { "saadparwaiz1/cmp_luasnip" },
+
 	{ "folke/neodev.nvim", event = "VeryLazy" },
 	-----------------------------------------------------------------
 
-	{ "mhartington/formatter.nvim" },
+	{ "mhartington/formatter.nvim", event = "VeryLazy"},
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
 
 	---- text decorations ----
@@ -70,7 +64,6 @@ local plugins = {
 		    }
         }
 	},
-	--{ "dotsilas/darcubox-nvim", event = "VeryLazy" },
 	--{
 	--	"maxmx03/FluoroMachine.nvim",
 	--	config = {

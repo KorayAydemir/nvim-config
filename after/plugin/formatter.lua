@@ -46,27 +46,23 @@ require("formatter").setup({
 			end,
 		},
 		["*"] = {
-			-- prettierd
 			function()
 				return {
 					exe = "prettierd",
 					args = {
-                        -- configure prettier in project config file
-						--"--tab-width=4",
-						--"--print-width=90",
+						-- configure prettier in project config file
 						--"--plugin=prettier-plugin-tailwindcss",
-						vim.api.nvim_buf_get_name(0),
+						util.escape_path(util.get_current_buffer_file_path()),
 					},
 					stdin = true,
 				}
 			end,
 		},
-		-- other formatters ...
 	},
 })
 
 vim.keymap.set("n", "<leader>fr", function()
-    vim.cmd("FormatWrite")
+	vim.cmd("FormatWrite")
 end, { silent = true })
 
 -- auto format on save

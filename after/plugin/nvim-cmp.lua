@@ -20,14 +20,14 @@ local cmp_config = {
 
 		["<C-p>"] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_prev_item({ behavior = "insert" })
+				cmp.select_prev_item({ behavior = "select" })
 			else
 				cmp.complete()
 			end
 		end),
 		["<C-n>"] = cmp.mapping(function()
 			if cmp.visible() then
-				cmp.select_next_item({ behavior = "insert" })
+				cmp.select_next_item({ behavior = "select" })
 			else
 				cmp.complete()
 			end

@@ -2,23 +2,14 @@ local builtin = require("telescope.builtin")
 local action_layout = require("telescope.actions.layout")
 local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
 
---require("telescope").setup {
---  pickers = {
---    oldfiles = {
---      initial_mode = "normal"
---    }
---  }
---}
-
 require("telescope").setup({
 	defaults = {
-        wrap_results = true,
 		file_ignore_patterns = { ".git" },
 		layout_strategy = "vertical",
 		layout_config = {
 			vertical = {
-                width = 100,
-                height = 100,
+                width = 0.99,
+                height = 0.99,
                 preview_height = 0.5,
                 preview_cutoff = 0,
             },

@@ -36,6 +36,21 @@ lspconfig.tailwindcss.setup({
 lspconfig.emmet_language_server.setup({
     capabilities = capabilities,
 })
+lspconfig.gopls.setup({
+    capabilities = capabilities,
+})
+lspconfig.golangci_lint_ls.setup({
+    capabilities = capabilities,
+})
+lspconfig.jdtls.setup({
+    capabilities = capabilities,
+})
+lspconfig.pyright.setup({
+    capabilities = capabilities,
+})
+lspconfig.pylsp.setup({
+    capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)

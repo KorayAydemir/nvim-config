@@ -52,6 +52,7 @@ require("formatter").setup({
 					args = {
 						-- configure prettier in project config file
 						--"--plugin=prettier-plugin-tailwindcss",
+						"--tab-width=4",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
 					stdin = true,

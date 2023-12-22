@@ -16,3 +16,7 @@ vim.cmd([[hi Comment guifg='red' ]])
 -- Blame line
 vim.g.gitblame_highlight_group = "GitBlame"
 vim.cmd[[hi GitBlame guifg='#aaaaaa' guibg=none]]
+
+-- Status line
+vim.cmd([[hi StatusLine guifg='#fdfdfd' guibg='#a0a0a0']])
+

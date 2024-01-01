@@ -45,6 +45,14 @@ require("formatter").setup({
 				}
 			end,
 		},
+        dart = {
+            function()
+                return {
+                    exe = "dart format",
+                    stdin = true,
+                }
+            end,
+        },
 		["*"] = {
 			function()
 				return {

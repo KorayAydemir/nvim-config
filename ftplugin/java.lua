@@ -1,7 +1,17 @@
 local jdtls = require('jdtls')
 local config = {
     cmd = { vim.fn.expand('$HOME/.local/share/nvim/mason/bin/jdtls') },
-    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+    settings = {
+        java = {
+            project = {
+                referencedLibraries = {
+                    include = {
+                        "/home/koray/dev/java-deps/*.jar",
+                    }
+                },
+            }
+        }
+    }
 }
 jdtls.start_or_attach(config)
 

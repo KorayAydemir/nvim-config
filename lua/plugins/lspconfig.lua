@@ -42,16 +42,16 @@ lspconfig.gopls.setup({
 lspconfig.golangci_lint_ls.setup({
     capabilities = capabilities,
 })
-lspconfig.jdtls.setup({
-    capabilities = capabilities,
-})
+--lspconfig.jdtls.setup({ -- gets set up by nvim-jdtls plugin
+--    capabilities = capabilities,
+--})
 lspconfig.pyright.setup({
     capabilities = capabilities,
 })
 lspconfig.pylsp.setup({
     capabilities = capabilities,
 })
-lspconfig.dartls.setup({ -- it is configured by flutter-tools
+lspconfig.dartls.setup({
     capabilities = capabilities,
 })
 

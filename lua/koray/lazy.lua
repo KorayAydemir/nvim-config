@@ -26,6 +26,7 @@ local plugins = {
     { "neovim/nvim-lspconfig" },
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
+    { "mfussenegger/nvim-jdtls" },
 
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
@@ -65,7 +66,8 @@ local plugins = {
         name = "rose-pine",
         config = {
             -- usage 'main'|'moon'|'dawn'
-            variant = 'auto',
+            --variant = 'auto',
+            variant = 'moon',
             dark_variant = 'main',
             disable_background = false,
             disable_float_background = true,

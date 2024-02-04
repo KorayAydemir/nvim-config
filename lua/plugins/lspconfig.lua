@@ -1,7 +1,7 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
     -- rust-analyzer should be installed via rustup!
-    ensure_installed = { "tsserver", "eslint", "lua_ls", "bashls" },
+    ensure_installed = { "tsserver", "eslint", "lua_ls", "bashls", "lua_ls" },
 })
 
 require("neodev").setup({})
@@ -39,10 +39,7 @@ lspconfig.emmet_language_server.setup({
 lspconfig.gopls.setup({
     capabilities = capabilities,
 })
-lspconfig.golangci_lint_ls.setup({
-    capabilities = capabilities,
-})
---lspconfig.jdtls.setup({ -- gets set up by nvim-jdtls plugin
+--lspconfig.golangci_lint_ls.setup({
 --    capabilities = capabilities,
 --})
 lspconfig.pyright.setup({
@@ -52,6 +49,9 @@ lspconfig.pylsp.setup({
     capabilities = capabilities,
 })
 lspconfig.dartls.setup({
+    capabilities = capabilities,
+})
+lspconfig.clangd.setup({
     capabilities = capabilities,
 })
 

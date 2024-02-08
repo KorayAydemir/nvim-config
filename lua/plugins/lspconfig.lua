@@ -54,6 +54,9 @@ lspconfig.dartls.setup({
 lspconfig.clangd.setup({
     capabilities = capabilities,
 })
+lspconfig.htmx.setup({
+    capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)

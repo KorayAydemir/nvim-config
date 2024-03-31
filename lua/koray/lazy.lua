@@ -64,7 +64,7 @@ local plugins = {
     {
         "rose-pine/neovim",
         name = "rose-pine",
-        config = {
+        opts = {
             -- usage 'main'|'moon'|'dawn'
             variant = 'auto',
             dark_variant = 'main',

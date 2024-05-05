@@ -31,7 +31,7 @@ vim.keymap.set("t", "<C-[>", "<C-\\><C-N>", {})
 
 --https://stackoverflow.com/a/17096082
 -- relative path
-vim.keymap.set("n", "<leader>path", "<cmd>:let @+=@%<CR>")
+vim.keymap.set("n", "<leader>pa", "<cmd>:let @+=@%<CR>")
 
 -- full path
 --:let @+ = expand("%:p")

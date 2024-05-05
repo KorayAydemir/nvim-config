@@ -60,4 +60,3 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.g.markdown_folding = 1
 vim.opt.foldopen = 'block,mark,percent,quickfix,search,tag,undo' --hor removed
-

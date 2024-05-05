@@ -27,7 +27,11 @@ lspconfig.tsserver.setup({
 lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
     settings = {
-        ["rust-analyzer"] = {},
+        ["rust-analyzer"] = {
+            check = {
+                command = "clippy"
+            }
+        },
     },
 })
 lspconfig.tailwindcss.setup({

@@ -53,9 +53,6 @@ vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 vim.opt.showmode = false
 vim.opt.autoread = true
 
--- code folding
---vim.opt.fillchars = { fold = " " }
---vim.opt.foldenable = false
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.g.markdown_folding = 1

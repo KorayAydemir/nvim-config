@@ -20,6 +20,7 @@ local plugins = {
     { "zbirenbaum/copilot.lua" },
 
     { "windwp/nvim-ts-autotag",                   event = "VeryLazy" },
+    { "f-person/git-blame.nvim",    event = "VeryLazy" },
     -----------------------------------------------------------------
 
     ---- LSP ----
@@ -50,12 +51,10 @@ local plugins = {
         config = true,
     },
     -----------------------------------------------------------------
-
     { "mhartington/formatter.nvim", event = "VeryLazy" },
-    { "f-person/git-blame.nvim",    event = "VeryLazy" },
 
     ---- text decorations ----
-    { "norcalli/nvim-colorizer.lua" },
+    { "norcalli/nvim-colorizer.lua" }, -- highlight #hex color codes
     { "nullchilly/fsread.nvim",     event = "VeryLazy" },
     { "folke/twilight.nvim",        event = "VeryLazy" },
     -----------------------------------------------------------------
@@ -64,9 +63,9 @@ local plugins = {
     {
         "rose-pine/neovim",
         name = "rose-pine",
-        config = {
+        opts = {
             -- usage 'main'|'moon'|'dawn'
-            variant = 'auto',
+            variant = 'main',
             dark_variant = 'main',
             disable_background = false,
             disable_float_background = true,
@@ -94,13 +93,11 @@ local plugins = {
     --		theme = "fluoromachine", -- delta, fluoromachine, retrowave
     --		transparent = "all",
     --	},
-    --},
-    { "vimpostor/vim-lumen" },
+    --}, { "vimpostor/vim-lumen" },
 
     -----------------------------------------------------------------
 
     ---- extras ----
-    { "andweeb/presence.nvim",           event = "VeryLazy" },
     { "eandrju/cellular-automaton.nvim", event = "VeryLazy" },
     { "lervag/vimtex",                   event = "VeryLazy" },
     -----------------------------------------------------------------

@@ -18,7 +18,7 @@ vim.opt.linebreak = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+--vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- DISABLED FOR WINDOWS
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -53,12 +53,8 @@ vim.cmd [[autocmd FileType * set formatoptions-=cro]]
 vim.opt.showmode = false
 vim.opt.autoread = true
 
--- code folding
---vim.opt.fillchars = { fold = " " }
---vim.opt.foldenable = false
 vim.opt.foldmethod = "indent"
 vim.opt.foldlevel = 99
 vim.g.markdown_folding = 1
 vim.opt.foldopen = 'block,mark,percent,quickfix,search,tag,undo' --hor removed
 vim.opt.mousemodel = 'extend'
-

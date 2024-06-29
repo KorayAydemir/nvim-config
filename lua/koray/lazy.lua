@@ -38,26 +38,14 @@ local plugins = {
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
 	{ "saadparwaiz1/cmp_luasnip" },
-
 	{ "folke/neodev.nvim", event = "VeryLazy" },
-
-	{
-		"akinsho/flutter-tools.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			--'stevearc/dressing.nvim', -- optional for vim.ui.select
-		},
-		config = true,
-	},
-
+	-- progress bar for lsp
 	{
 		"j-hui/fidget.nvim",
 		opts = {
 			-- options
 		},
-	}, -- progress bar for LSP
-	-----------------------------------------------------------------
+	},
 	{ "mhartington/formatter.nvim", event = "VeryLazy" },
 
 	---- text decorations ----
@@ -67,41 +55,34 @@ local plugins = {
 	-----------------------------------------------------------------
 
 	---- color schemes ----
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		opts = {
-			-- usage 'main'|'moon'|'dawn'
-			variant = "main",
-			dark_variant = "main",
-			disable_background = false,
-			disable_float_background = true,
-			highlight_groups = {
-				Comment = { fg = "red" },
-			},
-		},
-	},
+	--{
+	--	"rose-pine/neovim",
+	--	name = "rose-pine",
+	--	opts = {
+	--		-- usage 'main'|'moon'|'dawn'
+	--		variant = "dawn",
+	--		dark_variant = "main",
+	--		disable_background = false,
+	--		disable_float_background = true,
+	--		highlight_groups = {
+	--			Comment = { fg = "red" },
+	--		},
+	--	},
+	--},
 	{
 		"mikesmithgh/kitty-scrollback.nvim",
 		enabled = true,
 		lazy = true,
 		cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
 		event = { "User KittyScrollbackLaunch" },
-		version = "^4.0.0", -- pin major version, include fixes and features that do not have breaking changes
+		version = "^4.0.0",
 		config = function()
 			require("kitty-scrollback").setup()
 			vim.opt.wrap = true
 		end,
 	},
-	--{
-	--	"maxmx03/FluoroMachine.nvim",
-	--	config = {
-	--		glow = true,
-	--		theme = "fluoromachine", -- delta, fluoromachine, retrowave
-	--		transparent = "all",
-	--	},
-	--}, { "vimpostor/vim-lumen" },
-
+	--{ "yorickpeterse/vim-paper" },
+	{ "morhetz/gruvbox" },
 	-----------------------------------------------------------------
 
 	---- extras ----

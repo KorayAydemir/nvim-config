@@ -21,6 +21,7 @@ local plugins = {
 
 	{ "windwp/nvim-ts-autotag", event = "VeryLazy" },
 	{ "f-person/git-blame.nvim", event = "VeryLazy" },
+    { "nvim-tree/nvim-web-devicons" },
 	-----------------------------------------------------------------
 
 	---- LSP ----

@@ -1,7 +1,7 @@
 require("mason").setup({})
 require("mason-lspconfig").setup({
     -- rust-analyzer should be installed via rustup!
-    ensure_installed = { "tsserver", "eslint", "lua_ls", "bashls", "lua_ls" },
+    ensure_installed = { "tsserver", "eslint", "lua_ls", "bashls" },
 })
 
 require("neodev").setup({})

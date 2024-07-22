@@ -1,100 +1,96 @@
-local util = require("formatter.util")
+local function config()
+    local util = require("formatter.util")
 
-local function prettier()
-	return {
-		exe = "prettierd",
-		args = {
-			-- configure prettier in project config file
-			--"--plugin=prettier-plugin-tailwindcss",
-			"--tab-width=4",
-			util.escape_path(util.get_current_buffer_file_path()),
-		},
-		stdin = true,
-	}
+    local function prettier()
+        return {
+            exe = "prettierd",
+            args = {
+                --"--plugin=prettier-plugin-tailwindcss",
+                "--tab-width=4",
+                util.escape_path(util.get_current_buffer_file_path()),
+            },
+            stdin = true,
+        }
+    end
+
+    local opts = {
+        logging = true,
+        log_level = vim.log.levels.WARN,
+        filetype = {
+            lua = {
+                require("formatter.filetypes.lua").stylua,
+
+                function()
+                    return {
+                        exe = "stylua",
+                        args = {
+                            "--search-parent-directories",
+                            "--stdin-filepath",
+                            util.escape_path(util.get_current_buffer_file_path()),
+                            "--",
+                            "-",
+                        },
+                        stdin = true,
+                    }
+                end,
+            },
+            rust = {
+                function()
+                    return {
+                        exe = "rustfmt",
+                        args = {},
+                        stdin = true,
+                    }
+                end,
+            },
+            tex = {
+                function()
+                    return {
+                        exe = "latexindent",
+                        args = {
+                            "-g",
+                            "/dev/null",
+                        },
+                        stdin = true,
+                    }
+                end,
+            },
+            java = {
+                function()
+                    return {
+                        exe = "google-java-format",
+                        args = {
+                            "--aosp",
+                            util.escape_path(util.get_current_buffer_file_path()),
+                        },
+                        stdin = false,
+                    }
+                end,
+            },
+            c = {
+                require("formatter.filetypes.c").clangformat,
+            },
+            ["js"] = {
+                prettier,
+            },
+            html = { prettier },
+            css = { prettier },
+        },
+    }
+
+    require("formatter").setup(opts)
 end
 
-require("formatter").setup({
-	logging = true,
-	log_level = vim.log.levels.WARN,
-	filetype = {
-		lua = {
-			-- "formatter.filetypes.lua" defines default configurations for the
-			-- "lua" filetype
-			require("formatter.filetypes.lua").stylua,
-
-			-- You can also define your own configuration
-			function()
-				return {
-					exe = "stylua",
-					args = {
-						"--search-parent-directories",
-						"--stdin-filepath",
-						util.escape_path(util.get_current_buffer_file_path()),
-						"--",
-						"-",
-					},
-					stdin = true,
-				}
-			end,
-		},
-		rust = {
-			function()
-				return {
-					exe = "rustfmt",
-					args = {},
-					stdin = true,
-				}
-			end,
-		},
-		tex = {
-			function()
-				return {
-					exe = "latexindent",
-					args = {
-						"-g",
-						"/dev/null",
-					},
-					stdin = true,
-				}
-			end,
-		},
-		dart = {
-			function()
-				return {
-					exe = "dart format",
-					stdin = true,
-				}
-			end,
-		},
-		java = {
-			function()
-				return {
-					exe = "google-java-format",
-					args = {
-						"--aosp",
-						util.escape_path(util.get_current_buffer_file_path()),
-					},
-					stdin = false,
-				}
-			end,
-		},
-		c = {
-			require("formatter.filetypes.c").clangformat,
-		},
-		["js"] = {
-			prettier,
-		},
-		html = { prettier },
-		css = { prettier },
-	},
-})
-
-vim.keymap.set("n", "<leader>fr", function()
+local function format_and_save()
 	vim.cmd("FormatWrite")
-end, { silent = true })
+end
 
--- auto format on save
--- vim.cmd([[augroup FormatAutogroup
---   autocmd!
---   autocmd BufWritePost * FormatWrite
--- augroup END]])
+return {
+	"mhartington/formatter.nvim",
+    config = config,
+	keys = {{
+		"<leader>fr",
+		format_and_save,
+		{ silent = true },
+    }},
+}

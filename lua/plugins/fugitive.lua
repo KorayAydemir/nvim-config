@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>fg", vim.cmd.Git)
+return { "tpope/vim-fugitive" }

@@ -6,7 +6,4 @@ return {
 			vim.cmd("GitBlameToggle")
 		end,
     }},
-	config = function()
-		vim.g.gitblame_enabled = 0
-	end,
 }

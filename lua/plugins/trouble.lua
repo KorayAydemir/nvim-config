@@ -48,4 +48,4 @@ local opts = {
 	use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 }
 
-return { "folke/trouble.nvim", opts = opts }
+return { "folke/trouble.nvim", opts = opts, event = "VeryLazy" }

@@ -68,7 +68,20 @@ local function nvim_cmp_config()
 end
 
 return {
-	{ "hrsh7th/nvim-cmp", config = nvim_cmp_config },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-nvim-lua" },
+	{
+		"hrsh7th/nvim-cmp",
+		config = nvim_cmp_config,
+		event = "InsertEnter",
+		lazy = true,
+		opts = function(_, opts)
+			opts.sources = opts.sources or {}
+			table.insert(opts.sources, {
+				name = "lazydev",
+				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			})
+		end,
+	},
+	{ "hrsh7th/cmp-nvim-lsp", lazy = true },
+	{ "hrsh7th/cmp-nvim-lua", event = "InsertEnter" },
+	{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
 }

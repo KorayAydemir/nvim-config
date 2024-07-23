@@ -1,1 +1,1 @@
-return { "folke/twilight.nvim" }
+return { "folke/twilight.nvim", cmd = "Twilight"}

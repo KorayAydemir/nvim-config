@@ -42,4 +42,4 @@ local opts = {
 	server_opts_overrides = {},
 }
 
-return { "zbirenbaum/copilot.lua", opts = opts, event = "VeryLazy" }
+return { "zbirenbaum/copilot.lua", opts = opts, event = "InsertEnter" }

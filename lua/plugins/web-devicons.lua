@@ -54,4 +54,5 @@ local opts = {
 return {
 	"kyazdani42/nvim-web-devicons",
 	opts = opts,
+    lazy = true,
 }

@@ -60,7 +60,6 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf, remap = false }
-		local telescope = require("telescope.builtin")
 
 		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -70,13 +69,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 		vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>vrr", telescope.lsp_references, opts)
 		vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
-		vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-			require("luasnip").jump(-1)
-		end, { desc = "LuaSnip backward jump" })
 
 		vim.keymap.set("n", "<space>vfr", function()
 			vim.lsp.buf.format({ async = true })
@@ -88,13 +82,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 return {
 	{ "neovim/nvim-lspconfig", config = lsp_config, event = "VeryLazy" },
-	{ "mfussenegger/nvim-jdtls", event = "VeryLazy" },
-	{
-		"L3MON4D3/LuaSnip",
-		event = "VeryLazy",
-		requires = { "rafamadriz/friendly-snippets" },
-	},
-	{ "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
-	{ "folke/neodev.nvim", event = "VeryLazy" },
-	{ "j-hui/fidget.nvim", event = "VeryLazy" },
+	{ "mfussenegger/nvim-jdtls", lazy= true },
 }

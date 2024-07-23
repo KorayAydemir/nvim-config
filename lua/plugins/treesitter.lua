@@ -29,6 +29,7 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+        event = "VeryLazy",
 	},
-	"windwp/nvim-ts-autotag",
+    { "windwp/nvim-ts-autotag", event = "InsertEnter", dependencies = "nvim-treesitter/nvim-treesitter"},
 }

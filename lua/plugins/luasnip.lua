@@ -25,6 +25,10 @@ local function config()
 			},
 		},
 	})
+
+    vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+        require("luasnip").jump(-1)
+    end, { desc = "LuaSnip backward jump" })
 end
 
 return {
@@ -32,6 +36,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = config,
+        event = "InsertEnter"
 	},
-	{ "rafamadriz/friendly-snippets" },
+	{ "rafamadriz/friendly-snippets", lazy = true },
 }

@@ -97,6 +97,8 @@ local config = function()
 	-- marks
 	vim.keymap.set("n", "<leader>tm", builtin.marks, {})
 
+	vim.keymap.set("n", "<leader>vrr", builtin.lsp_references, {})
+
 	require("telescope").setup(opts)
 end
 
@@ -106,7 +108,7 @@ return {
         lazy = true,
 		config = config,
 		version = "0.1.2",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim", "kyazdani42/nvim-web-devicons" },
 		keys = {
 			"<leader>vh",
 			"<leader>of",

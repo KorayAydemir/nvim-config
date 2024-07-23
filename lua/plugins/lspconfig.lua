@@ -87,29 +87,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 return {
-	{ "neovim/nvim-lspconfig", config = lsp_config },
-	{
-		"williamboman/mason.nvim",
-		config = true,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		opts = {
-			-- rust-analyzer should be installed via rustup!
-			ensure_installed = { "tsserver", "lua_ls", "bashls" },
-		},
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-	},
-
-	{ "mfussenegger/nvim-jdtls" },
-
+	{ "neovim/nvim-lspconfig", config = lsp_config, event = "VeryLazy" },
+	{ "mfussenegger/nvim-jdtls", event = "VeryLazy" },
 	{
 		"L3MON4D3/LuaSnip",
+		event = "VeryLazy",
 		requires = { "rafamadriz/friendly-snippets" },
 	},
-	{ "saadparwaiz1/cmp_luasnip" },
-	{ "folke/neodev.nvim" },
-	{ "j-hui/fidget.nvim" },
+	{ "saadparwaiz1/cmp_luasnip", event = "VeryLazy" },
+	{ "folke/neodev.nvim", event = "VeryLazy" },
+	{ "j-hui/fidget.nvim", event = "VeryLazy" },
 }

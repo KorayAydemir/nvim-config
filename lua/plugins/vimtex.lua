@@ -16,4 +16,5 @@ end
 return {
 	"lervag/vimtex",
 	config = config,
+    event = "VeryLazy"
 }

@@ -1,5 +1,5 @@
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "javascript", "css", "typescript", "html", "lua", "regex", "rust", "c", "tsx"  },
+local opts = {
+	ensure_installed = { "javascript", "css", "typescript", "html", "lua", "regex", "rust", "c", "tsx" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -7,9 +7,9 @@ require("nvim-treesitter.configs").setup({
 	-- Automatically install missing parsers when entering buffer
 	auto_install = false,
 
-    ignore_install = {},
+	ignore_install = {},
 
-    modules = {},
+	modules = {},
 
 	autotag = {
 		enable = true,
@@ -19,4 +19,16 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		additional_vim_regex_highlighting = false,
 	},
-})
+}
+
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+
+		config = function()
+			require("nvim-treesitter.configs").setup(opts)
+		end,
+	},
+	"windwp/nvim-ts-autotag",
+}

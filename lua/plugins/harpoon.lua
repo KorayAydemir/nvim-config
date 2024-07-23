@@ -1,9 +1,14 @@
 local toggle_opts = { ui_width_ratio = vim.api.nvim_win_get_width(0) }
 
+local opts = { settings = {
+	save_on_toggle = true,
+} }
+
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
+	opts = opts,
 	keys = {
 		{
 			"<leader>a",

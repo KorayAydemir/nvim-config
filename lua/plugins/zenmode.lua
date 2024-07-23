@@ -31,7 +31,7 @@ end
 return {
 	"folke/zen-mode.nvim",
 	keys = { {
-		"leader<zz>",
+		"<leader>zz",
 		toggle_zen_mode,
 	} },
 }

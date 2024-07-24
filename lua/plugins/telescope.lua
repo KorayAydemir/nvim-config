@@ -55,10 +55,7 @@ local config = function()
 	end)
 	-- Live search in current working directory, respects .gitignore
 	vim.keymap.set("n", "<leader>gl", builtin.live_grep, {})
-	-- mini window
-	vim.keymap.set("n", "<leader>mgl", function()
-		builtin.live_grep(dropdown)
-	end)
+
 	-- Search word under cursor
 	vim.keymap.set("n", "<leader>pw", function()
 		builtin.grep_string({ search = vim.fn.expand("<cword>") })

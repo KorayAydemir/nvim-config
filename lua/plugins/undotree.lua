@@ -1,4 +1,6 @@
-return { "mbbill/undotree", keys = { {
-	"<F5>",
-	vim.cmd.UndotreeToggle,
-} } }
+return {
+	"mbbill/undotree",
+	keys = {
+		{ "<F5>", vim.cmd.UndotreeToggle },
+	},
+}

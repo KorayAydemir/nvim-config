@@ -4,47 +4,52 @@ local opts = { settings = {
 	save_on_toggle = true,
 } }
 
-return {
-	"ThePrimeagen/harpoon",
-	branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = opts,
-	keys = {
+local function keys()
+    local harpoon = require("harpoon")
+    return {
 		{
 			"<leader>a",
 			function()
-				require("harpoon"):list():add()
+				harpoon:list():add()
 			end,
 		},
 		{
 			"<C-e>",
 			function()
-				require("harpoon").ui:toggle_quick_menu(require("harpoon"):list(), toggle_opts)
+				harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
 			end,
 		},
 		{
 			"<leader>hw",
 			function()
-				require("harpoon"):list():select(1)
+				harpoon:list():select(1)
 			end,
 		},
 		{
 			"<leader>he",
 			function()
-				require("harpoon"):list():select(2)
+				harpoon:list():select(2)
 			end,
 		},
 		{
 			"<leader>hr",
 			function()
-				require("harpoon"):list():select(3)
+				harpoon:list():select(3)
 			end,
 		},
 		{
 			"<leader>hf",
 			function()
-				require("harpoon"):list():select(4)
+				harpoon:list():select(4)
 			end,
 		},
-	},
+	}
+end
+
+return {
+	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	opts = opts,
+	keys = keys,
 }

@@ -1,3 +1,61 @@
+local function lsp_config()
+	local lspconfig = require("lspconfig")
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+	local default_setups = {
+		"tsserver",
+		"eslint",
+		"tailwindcss",
+		"emmet_language_server",
+		"gopls",
+		"pyright",
+		"pylsp",
+		"clangd",
+		"htmx",
+		"csharp_ls",
+	}
+
+	for _, server in ipairs(default_setups) do
+		lspconfig[server].setup({
+			capabilities = capabilities,
+		})
+	end
+
+	lspconfig.lua_ls.setup({
+		capabilities = capabilities,
+		settings = {
+			Lua = {
+				workspace = {
+					checkThirdParty = false,
+					globals = {
+						"vim",
+					},
+				},
+			},
+		},
+	})
+
+	lspconfig.rust_analyzer.setup({
+		check = { command = "clippy", allTargets = false },
+		imports = {
+			granularity = {
+				group = "module",
+			},
+			prefix = "self",
+		},
+		cachePriming = false,
+		cargo = {
+			allTargets = false,
+			buildScripts = {
+				enable = false,
+			},
+		},
+		procMacro = {
+			enable = false,
+		},
+	})
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf, remap = false }
@@ -20,84 +78,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 return {
-	{ "neovim/nvim-lspconfig", event = "VeryLazy" },
-	{
-		"williamboman/mason.nvim",
-		config = true,
-		cmd = "Mason",
-	},
+	{ "neovim/nvim-lspconfig", event = "VeryLazy", config = lsp_config },
+
+	{ "williamboman/mason.nvim", config = true, cmd = "Mason" },
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			-- rust-analyzer should be installed via rustup!
 			-- lua-language-server may need to be installed manually as well due to PATH problems.
-			ensure_installed = { "tsserver", "lua_ls", "bashls" },
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						capabilities = require("cmp_nvim_lsp").capabilities,
-					})
-				end,
-
-                ["lua_ls"] = function()
-                    require("lspconfig").lua_ls.setup({
-                        capabilities = require("cmp_nvim_lsp").capabilities,
-                        settings = {
-                            Lua = {
-                                workspace = {
-                                    checkThirdParty = false,
-                                },
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                            },
-                        },
-                    })
-                end,
-
-                ["rust_analyzer"] = function()
-                    require("lspconfig").rust_analyzer.setup({
-                        capabilities = require("cmp_nvim_lsp").capabilities,
-                        settings = {
-                            ["rust-analyzer"] = {
-                                check = { command = "clippy", allTargets = false },
-                                imports = {
-                                    granularity = {
-                                        group = "module",
-                                    },
-                                    prefix = "self",
-                                },
-                                cachePriming = false,
-                                cargo = {
-                                    allTargets = false,
-                                    buildScripts = {
-                                        enable = false,
-                                    },
-                                },
-                                procMacro = {
-                                    enable = false,
-                                },
-                            },
-                        },
-                    })
-                end,
-			},
+			ensure_installed = { "tsserver", "lua_ls", "bashls", "tailwindcss" },
 		},
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
+		dependencies = { "williamboman/mason.nvim" },
 	},
-    {
-        "j-hui/fidget.nvim",
-        event = "VeryLazy",
-        config = true
-    },
-    {
-        {
-            "folke/lazydev.nvim",
-            ft = "lua",
-        },
-    },
+
+	{ "j-hui/fidget.nvim", event = "VeryLazy", opts = {} },
+	{ "folke/lazydev.nvim", ft = "lua", opts = {} },
 	{ "mfussenegger/nvim-jdtls", lazy = true },
 }

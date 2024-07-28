@@ -1,43 +1,44 @@
 local config = function()
 	local action_layout = require("telescope.actions.layout")
-    local opts = nil
-    opts = 'a'
 	local opts = {
-        defaults = {
-            cache_picker = {
-                num_pickers = 4
-            },
-        },
-        themes = {
-            ivy = {
-                layout_config = {
-                    width = 0.5,
-                    height = 1,
-                    preview_height = 0.5,
-                    preview_cutoff = 0,
-                },
-            },
-        },
-        pickers = {}
-	--	defaults = {
-	--		file_ignore_patterns = { ".git" },
-	--		layout_strategy = "vertical",
-	--		layout_config = {
-	--			vertical = {
-	--				width = 1,
-	--				height = 1,
-	--				preview_height = 0.5,
-	--				preview_cutoff = 0,
-	--			},
-	--		},
-	--	},
+		defaults = {
+			cache_picker = {
+				num_pickers = 4,
+			},
+            file_ignore_patterns = {
+                ".git",
+            }
+		},
+		themes = {
+			ivy = {
+				layout_config = {
+					width = 0.5,
+					height = 1,
+					preview_height = 0.5,
+					preview_cutoff = 0,
+				},
+			},
+		},
+		pickers = {},
+		--	defaults = {
+		--		file_ignore_patterns = { ".git" },
+		--		layout_strategy = "vertical",
+		--		layout_config = {
+		--			vertical = {
+		--				width = 1,
+		--				height = 1,
+		--				preview_height = 0.5,
+		--				preview_cutoff = 0,
+		--			},
+		--		},
+		--	},
 	}
 
-	local builtin = require("telescope.builtin")
-	local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
+	local telescope = require("telescope")
+	telescope.load_extension("fzf")
+	telescope.load_extension("undo")
 
-	-- List previously open files
-	--vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
+	local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
 
 	----================== FILE SEARCHING ==================
 	---- List files in cwd, respects .gitignore
@@ -94,6 +95,64 @@ local config = function()
 	require("telescope").setup(opts)
 end
 
+local function keys()
+	local builtin = require("telescope.builtin")
+	local themes = require("telescope.themes")
+
+	local showHidden = { hidden = true, follow = true }
+
+	-- C-q puts results in quickfix list
+	return {
+        -- Search all files in cwd.
+		{ "<leader>pf", function() builtin.find_files(showHidden) end },
+		-- Search output of `git ls-files` command. Shows only staged files, respects .gitignore
+		-- TODO: make this show staged files too
+		{ "<leader>pd", function() builtin.git_files(showHidden) end },
+
+		-- Search anything
+		{ "<leader>pg", function() builtin.live_grep() end },
+		-- Search the word under cursor
+		{ "<leader>pw", function() builtin.grep_string() end },
+
+		-- Search search history (/) and run on enter
+		{ "<leader>hh", function() builtin.search_history() end },
+
+		-- Search commands history and run on enter
+		{ "<leader>p;", function() builtin.command_history() end },
+
+		-- Search plugin/user commands
+		{ "<leader>p'", function() builtin.commands() end },
+
+		-- Search marks
+		{ "<leader>pm", function() builtin.marks() end },
+
+		-- Search jumplist
+		{ "<leader>jl", function() builtin.jumplist() end },
+
+		-- Search vim options and set on enter
+		{ "<leader>po", function() builtin.vim_options() end },
+
+		-- Search vim registers and paste on enter
+		{ "<leader>po", function() builtin.registers() end },
+
+		-- Live fuzzy search inside the current buffer
+		{ "<leader>/", function() builtin.current_buffer_fuzzy_find() end },
+
+		-- List previous pickers and run on enter
+		{ "<leader>pe", function() builtin.pickers() end },
+		-- List results of the previous picker
+		{ "<leader>pi", function() builtin.resume() end },
+
+		-- List incoming calls to word under cursor
+		{ "<leader>ic", function() builtin.lsp_incoming_calls() end },
+
+		-- List git status with diff preview
+		{ "<leader>gs", function() builtin.git_status() end },
+
+		{ "<leader>u", "<cmd>Telescope undo<cr>", desc="a" },
+	}
+end
+
 return {
 	{
 		"nvim-telescope/telescope.nvim",
@@ -103,52 +162,10 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-fzf-native.nvim",
-			"kyazdani42/nvim-web-devicons",
+			"nvim-tree/nvim-web-devicons",
+			"debugloop/telescope-undo.nvim",
 		},
-		keys = {
-			-- Search output of `git ls-files` command. Shows only staged files, respects .gitignore
-			{ "<leader>pf", function() require("telescope.builtin").git_files(require("telescope.themes").get_ivy()) end },
-            -- Search all files in current working directory
-			{ "<leader>pa", function() require("telescope.builtin").find_files() end },
-            -- Search for the word under cursor
-			{ "<leader>pw", function() require("telescope.builtin").grep_string() end },
-            -- Search for the word under cursor, live
-			{ "<leader>prg", function() require("telescope.builtin").live_grep() end },
-
-            -- Search search history (/) and run on enter
-			{ "<leader>hs", function() require("telescope.builtin").search_history() end },
-            -- Search commands history and run on enter
-			{ "<leader>hc", function() require("telescope.builtin").command_history() end },
-
-            -- Search plugin/user commands
-			{ "<leader>cm", function() require("telescope.builtin").commands() end },
-            -- Search marks
-			{ "<leader>pm", function() require("telescope.builtin").marks() end },
-
-            -- Search jumplist
-			{ "<leader>jl", function() require("telescope.builtin").jumplist() end },
-
-            -- Search vim options and set on enter
-			{ "<leader>po", function() require("telescope.builtin").vim_options() end },
-
-            -- Search vim registers and paste on enter
-			{ "<leader>po", function() require("telescope.builtin").registers() end },
-
-            -- Live fuzzy search inside the current buffer
-            { "<leader>ps", function() require("telescope.builtin").current_buffer_fuzzy_find() end },
-
-            -- List results of the previous picker
-			{ "<leader>pi", function() require("telescope.builtin").resume() end },
-            -- List results of the previous picker
-			{ "<leader>pe", function() require("telescope.builtin").pickers() end },
-
-            -- List incoming calls to word under cursor
-			{ "<leader>ic", function() require("telescope.builtin").lsp_incoming_calls() end },
-
-            -- List git status with diff preview
-			{ "<leader>gs", function() require("telescope.builtin").git_status() end },
-
-		},
+		keys = keys,
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 }

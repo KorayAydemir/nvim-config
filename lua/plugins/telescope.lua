@@ -6,8 +6,19 @@ local config = function()
         defaults = {
             cache_picker = {
                 num_pickers = 4
-            }
+            },
         },
+        themes = {
+            ivy = {
+                layout_config = {
+                    width = 0.5,
+                    height = 1,
+                    preview_height = 0.5,
+                    preview_cutoff = 0,
+                },
+            },
+        },
+        pickers = {}
 	--	defaults = {
 	--		file_ignore_patterns = { ".git" },
 	--		layout_strategy = "vertical",
@@ -20,7 +31,6 @@ local config = function()
 	--			},
 	--		},
 	--	},
-        pickers = {}
 	}
 
 	local builtin = require("telescope.builtin")
@@ -97,7 +107,7 @@ return {
 		},
 		keys = {
 			-- Search output of `git ls-files` command. Shows only staged files, respects .gitignore
-			{ "<leader>pf", function() require("telescope.builtin").git_files() end },
+			{ "<leader>pf", function() require("telescope.builtin").git_files(require("telescope.themes").get_ivy()) end },
             -- Search all files in current working directory
 			{ "<leader>pa", function() require("telescope.builtin").find_files() end },
             -- Search for the word under cursor
@@ -125,7 +135,7 @@ return {
 			{ "<leader>po", function() require("telescope.builtin").registers() end },
 
             -- Live fuzzy search inside the current buffer
-			{ "<leader>ps", function() require("telescope.builtin").current_buffer_fuzzy_find() end },
+            { "<leader>ps", function() require("telescope.builtin").current_buffer_fuzzy_find() end },
 
             -- List results of the previous picker
 			{ "<leader>pi", function() require("telescope.builtin").resume() end },

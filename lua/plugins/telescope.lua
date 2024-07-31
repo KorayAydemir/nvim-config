@@ -48,11 +48,11 @@ local function keys()
 	-- Live fuzzy search inside the current buffer
 	vim.keymap.set("n", "<leader>/", function() builtin.current_buffer_fuzzy_find() end)
 
-	-- List previous pickers and run on enter
-	vim.keymap.set("n", "<leader>pe", function() builtin.pickers() end)
-
 	-- List results of the previous picker
-	vim.keymap.set("n", "<leader>pi", function() builtin.resume() end)
+	vim.keymap.set("n", "<C-p>", function() builtin.resume() end)
+
+	-- List previous pickers and run on enter
+	vim.keymap.set("n", "<leader>pi", function() builtin.pickers() end)
 
 	-- List incoming calls to word under cursor
 	vim.keymap.set("n", "<leader>ic", function() builtin.lsp_incoming_calls() end)
@@ -141,6 +141,9 @@ return {
 			"<leader>ic",
 			"<leader>gs",
 			"<leader>u",
+            "<leader>vrr",
+            "<leader>gr",
+            "<C-p>",
 		},
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },

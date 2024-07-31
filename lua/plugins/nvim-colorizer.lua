@@ -7,5 +7,6 @@ local opts = {
 
 return {
 	"norcalli/nvim-colorizer.lua",
+    event = "VeryLazy",
 	opts = opts,
 }

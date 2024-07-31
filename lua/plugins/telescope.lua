@@ -1,100 +1,114 @@
+local function keys()
+	local builtin = require("telescope.builtin")
+	local themes = require("telescope.themes")
+
+	local showHidden = {
+		hidden = true,
+		follow = true,
+		layout_config = { height = 100 },
+	}
+
+	-- C-q puts results in quickfix list
+	local ivy = themes.get_ivy
+
+	-- Search all files in cwd.
+	vim.keymap.set("n", "<leader>pf", function() builtin.find_files(showHidden) end)
+
+	-- Search output of `git ls-files` command. Shows only staged files, respects .gitignore
+	vim.keymap.set("n", "<leader>pd", function() builtin.git_files(showHidden) end)
+
+	-- Search anything
+	vim.keymap.set("n", "<leader>pg", function() builtin.live_grep() end)
+
+	-- Search the word under cursor
+	vim.keymap.set("n", "<leader>pw", function() builtin.grep_string() end)
+
+	-- Search search history (/) and run on enter
+	vim.keymap.set("n", "<leader>hh", function() builtin.search_history() end)
+
+	-- Search commands history and run on enter
+	vim.keymap.set("n", "<leader>p;", function() builtin.command_history() end)
+
+	-- Search plugin/user commands
+	vim.keymap.set("n", "<leader>p'", function() builtin.commands() end)
+
+	-- Search marks
+	vim.keymap.set("n", "<leader>pm", function() builtin.marks() end)
+
+	-- Search jumplist
+	vim.keymap.set("n", "<leader>jl", function() builtin.jumplist() end)
+
+	-- Search vim options and set on enter
+	vim.keymap.set("n", "<leader>po", function() builtin.vim_options() end)
+
+	-- Search vim registers and paste on enter
+
+	vim.keymap.set("n", "<leader>po", function() builtin.registers() end)
+
+	-- Live fuzzy search inside the current buffer
+	vim.keymap.set("n", "<leader>/", function() builtin.current_buffer_fuzzy_find() end)
+
+	-- List previous pickers and run on enter
+	vim.keymap.set("n", "<leader>pe", function() builtin.pickers() end)
+
+	-- List results of the previous picker
+	vim.keymap.set("n", "<leader>pi", function() builtin.resume() end)
+
+	-- List incoming calls to word under cursor
+	vim.keymap.set("n", "<leader>ic", function() builtin.lsp_incoming_calls() end)
+
+	-- List git status with diff preview
+	vim.keymap.set("n", "<leader>gs", function() builtin.git_status() end)
+
+	vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+
+	vim.keymap.set("n", "<leader>vrr", builtin.lsp_references, {})
+
+	---- Search input in current working directory, respects .gitignore
+	vim.keymap.set("n", "<leader>gr", function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end)
+
+	-- Search word under cursor
+	vim.keymap.set("n", "<leader>gw", function() builtin.grep_string({ search = vim.fn.expand("<cword>") }) end)
+end
+
 local config = function()
-	local action_layout = require("telescope.actions.layout")
+	local layout = require("telescope.actions.layout")
+
 	local opts = {
 		defaults = {
-			file_ignore_patterns = { ".git" },
-			layout_strategy = "vertical",
+			path_display = { filename_first = { reverse_directories = true } },
+			preview = {
+				filesize_limit = 0.05, -- MB
+				highlight_limit = 0.02, -- MB
+			},
 			layout_config = {
-				vertical = {
-					width = 0.99,
-					height = 0.99,
-					preview_height = 0.5,
-					preview_cutoff = 0,
-				},
+				width = 300,
+				height = 100,
+				-- preview_height = 0.5,
+			},
+			cache_picker = {
+				num_pickers = 4,
+			},
+			file_ignore_patterns = {
+				".git",
 			},
 			mappings = {
 				i = {
-					["?"] = action_layout.toggle_preview,
+					["<C-a>"] = layout.toggle_preview,
+				},
+				n = {
+					["<C-a>"] = layout.toggle_preview,
 				},
 			},
 		},
+		pickers = {},
 	}
 
-	local builtin = require("telescope.builtin")
-	local dropdown = require("telescope.themes").get_dropdown({ hidden = true, follow = true })
-	-- Search string in :h
-	vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
+	local telescope = require("telescope")
+	telescope.load_extension("fzf")
+	telescope.load_extension("undo")
 
-	-- List previously open files
-	vim.keymap.set("n", "<leader>of", builtin.oldfiles, {})
-
-	-- Open telescope from where you left off
-	vim.keymap.set("n", "<C-p>", builtin.resume, {})
-
-	--================== FILE SEARCHING ==================
-	-- List files in cwd, respects .gitignore
-	vim.keymap.set("n", "<leader>pf", function()
-		builtin.find_files(dropdown)
-	end)
-	-- Small window
-	vim.keymap.set("n", "<leader>ff", function()
-		builtin.find_files({ hidden = true, follow = true })
-	end, {})
-	-- List staged files, respects .gitignore
-	vim.keymap.set("n", "<C-n>", builtin.git_files, {})
-	-- Small window
-	vim.keymap.set("n", "<C-j>", function()
-		builtin.git_files(dropdown)
-	end)
-	--================== FILE SEARCHING ==================
-
-	--================== GREP SEARCHING ==================
-	-- Search input in current working directory, respects .gitignore
-	vim.keymap.set("n", "<leader>gr", function()
-		builtin.grep_string({ search = vim.fn.input("Grep > ") })
-	end)
-	-- Live search in current working directory, respects .gitignore
-	vim.keymap.set("n", "<leader>gl", builtin.live_grep, {})
-
-	-- Search word under cursor
-	vim.keymap.set("n", "<leader>pw", function()
-		builtin.grep_string({ search = vim.fn.expand("<cword>") })
-	end)
-	--================== GREP SEARCHING ==================
-
-	--================== GIT SEARCHING ==================
-	-- Lists current changes per file with diff preview and add action. (
-	vim.keymap.set("n", "<leader>gst", builtin.git_status, {})
-
-	--
-	-- List all branches with log preview,
-	-- checkout action <cr>,
-	-- track action <C-t>,
-	-- rebase action<C-r>,
-	-- create action <C-a>,
-	-- switch action <C-s>,
-	-- delete action <C-d>,
-	-- merge action <C-y>
-	vim.keymap.set("n", "<leader>gbr", builtin.git_branches, {})
-
-	--
-	-- Lists git commits with diff preview,
-	-- checkout action <cr>,
-	-- reset mixed <C-r>m,
-	-- reset soft <C-r>s,
-	-- reset hard <C-r>h
-	vim.keymap.set("n", "<leader>gcm", builtin.git_commits, {})
-	-- List buffer's git commits with diff preview and check them out on <cr>
-	vim.keymap.set("n", "<leader>gbc", builtin.git_bcommits, {})
-	--
-
-	vim.keymap.set("n", "<leader>planets", builtin.planets, {})
-	vim.keymap.set("n", "<leader>tp", builtin.builtin, {})
-	vim.keymap.set("n", "<leader>ic", builtin.lsp_incoming_calls, {})
-	-- marks
-	vim.keymap.set("n", "<leader>tm", builtin.marks, {})
-
-	vim.keymap.set("n", "<leader>vrr", builtin.lsp_references, {})
+	keys()
 
 	require("telescope").setup(opts)
 end
@@ -102,30 +116,31 @@ end
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-        lazy = true,
 		config = config,
-		version = "0.1.2",
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim", "kyazdani42/nvim-web-devicons" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope-fzf-native.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"debugloop/telescope-undo.nvim",
+		},
 		keys = {
-			"<leader>vh",
-			"<leader>of",
-			"<C-p>",
-			"<leader>pf",
-			"<leader>ff",
-			"<C-n>",
-			"<C-j>",
-			"<leader>gr",
-			"<leader>gl",
-			"<leader>mgl",
+			{ "<leader>pf", desc = "Find files in cwd" },
+			"<leader>pd",
+			"<leader>pg",
 			"<leader>pw",
-			"<leader>gst",
-			"<leader>gbr",
-			"<leader>gcm",
-			"<leader>gbc",
-			"<leader>planets",
-			"<leader>tp",
+			"<leader>hh",
+			"<leader>p;",
+			"<leader>p'",
+			"<leader>pm",
+			"<leader>jl",
+			"<leader>po",
+			"<leader>po",
+			"<leader>/",
+			"<leader>pe",
+			"<leader>pi",
 			"<leader>ic",
-			"<leader>tm",
+			"<leader>gs",
+			"<leader>u",
 		},
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },

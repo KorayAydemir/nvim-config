@@ -1,11 +1,11 @@
 local opts = {
-	ensure_installed = { "javascript", "css", "typescript", "html", "lua", "regex", "rust", "c", "tsx" },
+	ensure_installed = { "javascript", "css", "typescript", "html", "lua", "regex", "rust", "c", "tsx", "vimdoc" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 
 	-- Automatically install missing parsers when entering buffer
-	auto_install = false,
+	auto_install = true,
 
 	ignore_install = {},
 
@@ -25,6 +25,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+        opts = {
+            compilers = { "clang", "gcc" },
+        },
 
 		config = function()
 			require("nvim-treesitter.configs").setup(opts)

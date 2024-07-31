@@ -78,8 +78,8 @@ local config = function()
 		defaults = {
 			path_display = { filename_first = { reverse_directories = true } },
 			preview = {
-				filesize_limit = 0.05, -- MB
-				highlight_limit = 0.02, -- MB
+				filesize_limit = 0.15, -- MB
+				highlight_limit = 0.15, -- MB
 			},
 			layout_config = {
 				width = 300,

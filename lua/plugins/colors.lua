@@ -8,6 +8,8 @@ local function config()
     vim.cmd([[hi GitBlame guifg='#aaaaaa' guibg=none]])
 
     vim.cmd([[hi StatusLine guifg='#fdfdfd' guibg='#a0a0a0']])
+
+    vim.cmd([[hi TelescopeResultsComment guifg='#fbf1c7' guibg='#282828']])
 end
 
 return { "morhetz/gruvbox", priority = 100, config = config }

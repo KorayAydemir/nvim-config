@@ -18,7 +18,7 @@ vim.opt.linebreak = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- DISABLED FOR WINDOWS
+--vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- DISABLED FOR WINDOWS
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -58,3 +58,5 @@ vim.opt.foldlevel = 99
 vim.g.markdown_folding = 1
 vim.opt.foldopen = 'block,mark,percent,quickfix,search,tag,undo' --hor removed
 vim.opt.mousemodel = 'extend'
+
+vim.opt.fileformats = "unix,dos,mac"

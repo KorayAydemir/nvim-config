@@ -45,7 +45,6 @@ local function nvim_cmp_config()
 				cmp.mapping.select_next_item()
 			end, { "i", "s" }),
 		}),
-
 		snippet = {
 			expand = function(args)
 				ls.lsp_expand(args.body)

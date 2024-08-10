@@ -1,4 +1,4 @@
-local toggle_opts = { ui_width_ratio = vim.api.nvim_win_get_width(0) }
+local toggle_opts = { ui_width_ratio = vim.api.nvim_win_get_width(0), uijk }
 
 local opts = {
 	settings = { save_on_toggle = true },
@@ -18,6 +18,17 @@ local function config()
 	vim.keymap.set("n", "<leader>he", function() harpoon:list():select(2) end)
 	vim.keymap.set("n", "<leader>hr", function() harpoon:list():select(3) end)
 	vim.keymap.set("n", "<leader>hf", function() harpoon:list():select(4) end)
+
+	harpoon:extend({
+		UI_CREATE = function(cx)
+			vim.keymap.set(
+				"n",
+				"<C-n>",
+				function() harpoon.ui:select_menu_item({ vsplit = true }) end,
+				{ buffer = cx.bufnr }
+			)
+		end,
+	})
 end
 
 return {

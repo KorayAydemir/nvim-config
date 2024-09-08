@@ -84,7 +84,6 @@ local config = function()
 			layout_config = {
 				width = 300,
 				height = 100,
-				-- preview_height = 0.5,
 			},
 			cache_picker = {
 				num_pickers = 4,

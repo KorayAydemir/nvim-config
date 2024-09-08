@@ -3,7 +3,7 @@ local function lsp_config()
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 	local default_setups = {
-		"tsserver",
+		"ts_ls",
 		"eslint",
 		"tailwindcss",
 		"emmet_language_server",
@@ -87,7 +87,7 @@ return {
 		opts = {
 			-- rust-analyzer should be installed via rustup!
 			-- lua-language-server may need to be installed manually as well due to PATH problems.
-			ensure_installed = { "tsserver", "lua_ls", "bashls", "tailwindcss" },
+			ensure_installed = { "ts_ls", "lua_ls", "bashls", "tailwindcss" },
 		},
 		dependencies = { "williamboman/mason.nvim" },
 	},

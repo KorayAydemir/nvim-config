@@ -4,7 +4,7 @@ local function lsp_config()
 
 	local default_setups = {
 		"ts_ls",
-		"eslint",
+		-- "eslint",
 		"tailwindcss",
 		"emmet_language_server",
 		"gopls",

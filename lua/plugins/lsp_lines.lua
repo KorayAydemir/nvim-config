@@ -4,7 +4,6 @@ local function config()
 	vim.keymap.set("n", "<leader>l", lsp_lines.toggle)
 
 	vim.diagnostic.config({ virtual_text = false })
-	vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
 end
 
 return {

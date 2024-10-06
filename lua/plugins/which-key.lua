@@ -1,5 +1,5 @@
 local opts = {
-	preset = "helix",
+	preset = "modern",
 }
 return {
 	"folke/which-key.nvim",

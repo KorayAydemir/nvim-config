@@ -5,9 +5,10 @@ local function nvim_cmp_config()
 	local opts = {
 		sources = {
 			{ name = "nvim_lsp" },
+            { name = "nvim_lua" },
 			{ name = "luasnip" },
-			{ name = "nvim_lua" },
-			{ name = "buffer", keyword_length = 3 }, -- wat this
+            { name = "path", keyword_length = 3 },
+			{ name = "buffer", keyword_length = 3 },
 		},
 		completion = {
 			completeopt = "menu,menuone,noinsert",

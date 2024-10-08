@@ -11,7 +11,7 @@ local function config()
 		},
 		-- you can enable a preset for easier configuration
 		presets = {
-			-- bottom_search = true, -- use a classic bottom cmdline for search
+			bottom_search = true, -- use a classic bottom cmdline for search
             -- long_message_to_split = true,
 			lsp_doc_border = true, -- add a border to hover docs and signature help
 		},

@@ -78,27 +78,23 @@ return {
 				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
 			})
 		end,
-	},
-	{ "hrsh7th/cmp-nvim-lsp", lazy = true },
-	{ "hrsh7th/cmp-nvim-lua", event = "InsertEnter" },
-	{ "hrsh7th/cmp-path", event = "InsertEnter" },
-	{
-		"Dynge/gitmoji.nvim",
 		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
-		opts = {
-			filetypes = {},
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-path",
+			{
+				"Dynge/gitmoji.nvim",
+				opts = {
+					filetypes = {},
+				},
+			},
+			{
+				"jcha0713/cmp-tw2css",
+				opts = {
+					fallback = false,
+				},
+			},
+            { "saadparwaiz1/cmp_luasnip" }
 		},
 	},
-	{
-		"jcha0713/cmp-tw2css",
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
-		opts = {
-			fallback = false,
-		},
-	},
-	{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
 }

@@ -5,13 +5,15 @@ local function nvim_cmp_config()
 	local opts = {
 		sources = {
 			{ name = "nvim_lsp" },
-            { name = "nvim_lua" },
+			{ name = "nvim_lua" },
 			{ name = "luasnip" },
-            { name = "path", keyword_length = 3 },
-			{ name = "buffer", keyword_length = 3 },
+			{ name = "cmp-tw2css" },
+			{ name = "path" },
+			--{ name = "buffer", keyword_length = 3 },
+			{ name = "gitmoji" },
 		},
 		completion = {
-			completeopt = "menu,menuone,noinsert",
+			completeopt = "menuone,noinsert",
 		},
 		mapping = cmp.mapping.preset.insert({
 			["S-Tab"] = nil,
@@ -47,18 +49,14 @@ local function nvim_cmp_config()
 			end, { "i", "s" }),
 		}),
 		snippet = {
-			expand = function(args)
-				ls.lsp_expand(args.body)
-			end,
+			expand = function(args) ls.lsp_expand(args.body) end,
 		},
 		enabled = function()
 			local context = require("cmp.config.context")
 			if vim.api.nvim_get_mode().mode == "c" then
 				return true
 			else
-				if vim.bo.buftype == "prompt" then
-					return false
-				end
+				if vim.bo.buftype == "prompt" then return false end
 				return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 			end
 		end,
@@ -83,5 +81,24 @@ return {
 	},
 	{ "hrsh7th/cmp-nvim-lsp", lazy = true },
 	{ "hrsh7th/cmp-nvim-lua", event = "InsertEnter" },
+	{ "hrsh7th/cmp-path", event = "InsertEnter" },
+	{
+		"Dynge/gitmoji.nvim",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
+		opts = {
+			filetypes = {},
+		},
+	},
+	{
+		"jcha0713/cmp-tw2css",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		},
+		opts = {
+			fallback = false,
+		},
+	},
 	{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
 }

@@ -7,11 +7,9 @@ local function config()
     vim.g.gitblame_highlight_group = "GitBlame"
     vim.cmd([[hi GitBlame guifg='#aaaaaa' guibg=none]])
 
-    vim.cmd([[hi StatusLine guifg='#fdfdfd' guibg='#a0a0a0']])
+    vim.cmd([[hi StatusLine guifg='#252525' guibg='#dcdcdc']])
 
     vim.cmd([[hi TelescopeResultsComment guifg='#fbf1c7' guibg='#282828']])
 end
 
 return { "morhetz/gruvbox", priority = 100, config = config }
-
-

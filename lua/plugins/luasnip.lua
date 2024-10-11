@@ -38,5 +38,4 @@ return {
 		config = config,
         event = "InsertEnter"
 	},
-	{ "rafamadriz/friendly-snippets", lazy = true },
 }

@@ -1,6 +1,6 @@
 local function nvim_cmp_config()
 	local cmp = require("cmp")
-	local ls = require("luasnip")
+	local luasnip = require("luasnip")
 
 	local opts = {
 		sources = {
@@ -40,8 +40,8 @@ local function nvim_cmp_config()
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					fallback()
-				elseif ls.expand_or_jumpable() then
-					ls.expand_or_jump()
+				elseif luasnip.expand_or_jumpable() then
+					luasnip.expand_or_jump()
 				else
 					fallback()
 				end
@@ -49,7 +49,7 @@ local function nvim_cmp_config()
 			end, { "i", "s" }),
 		}),
 		snippet = {
-			expand = function(args) ls.lsp_expand(args.body) end,
+			expand = function(args) luasnip.lsp_expand(args.body) end,
 		},
 		enabled = function()
 			local context = require("cmp.config.context")

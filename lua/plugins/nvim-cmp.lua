@@ -4,12 +4,13 @@ local function nvim_cmp_config()
 
 	local opts = {
 		sources = {
+            -- todo figure out why keyword_length option does not work
 			{ name = "nvim_lsp" },
 			{ name = "nvim_lua" },
 			{ name = "luasnip" },
 			{ name = "cmp-tw2css" },
+            { name = "buffer" },
 			{ name = "path" },
-			--{ name = "buffer", keyword_length = 3 },
 			{ name = "gitmoji" },
 		},
 		completion = {
@@ -98,7 +99,8 @@ return {
 					fallback = false,
 				},
 			},
-			{ "saadparwaiz1/cmp_luasnip" },
+            { "saadparwaiz1/cmp_luasnip" },
+            { "hrsh7th/cmp-buffer" }
 		},
 	},
 }

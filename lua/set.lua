@@ -60,5 +60,5 @@ vim.g.markdown_folding = 1
 vim.opt.foldopen = "block,mark,percent,quickfix,search,tag,undo" --hor removed
 vim.opt.mousemodel = "extend"
 
-vim.opt.fileformats = "unix"
+vim.opt.fileformats = "unix,dos"
 vim.opt.fileformat = "unix"

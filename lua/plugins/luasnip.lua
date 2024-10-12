@@ -1,6 +1,5 @@
 local function config()
 	local ls = require("luasnip")
-	local types = require("luasnip.util.types")
 
     ls.filetype_extend("javascript", {"javascriptreact"})
     ls.filetype_extend("typescript", {"typescriptreact"})
@@ -18,15 +17,6 @@ local function config()
 
 		-- Autosnippets:
 		enable_autosnippets = true,
-
-		-- Crazy highlights!!
-		ext_opts = {
-			[types.choiceNode] = {
-				active = {
-					virt_text = { { " « ", "NonTest" } },
-				},
-			},
-		},
 	})
 
     vim.keymap.set({ "i", "s" }, "<S-Tab>", function()

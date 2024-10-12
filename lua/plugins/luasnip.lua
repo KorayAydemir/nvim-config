@@ -1,6 +1,9 @@
 local function config()
 	local ls = require("luasnip")
 	local types = require("luasnip.util.types")
+
+    ls.filetype_extend("javascript", {"javascriptreact"})
+    ls.filetype_extend("typescript", {"typescriptreact"})
 	require("luasnip.loaders.from_vscode").lazy_load()
 
 	ls.config.set_config({

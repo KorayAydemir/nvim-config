@@ -15,6 +15,9 @@ local function nvim_cmp_config()
 		completion = {
 			completeopt = "menuone,noinsert",
 		},
+        performance = {
+            fetching_timeout = 1
+        },
 		mapping = cmp.mapping.preset.insert({
 			["S-Tab"] = nil,
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -85,6 +88,7 @@ return {
 			{
 				"Dynge/gitmoji.nvim",
 				opts = {
+                    -- makes it work on all filetypes instead of only commits
 					filetypes = {},
 				},
 			},
@@ -94,7 +98,7 @@ return {
 					fallback = false,
 				},
 			},
-            { "saadparwaiz1/cmp_luasnip" }
+			{ "saadparwaiz1/cmp_luasnip" },
 		},
 	},
 }

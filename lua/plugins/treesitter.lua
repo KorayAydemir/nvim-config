@@ -25,14 +25,28 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-        opts = {
-            compilers = { "clang", "gcc" },
-        },
+		opts = {
+			compilers = { "clang", "gcc" },
+		},
 
-		config = function()
-			require("nvim-treesitter.configs").setup(opts)
-		end,
-        event = "VeryLazy",
+		config = function() require("nvim-treesitter.configs").setup(opts) end,
+		event = "VeryLazy",
+		dependencies = {
+			{ "windwp/nvim-ts-autotag" },
+			{
+				"nvim-treesitter/nvim-treesitter-context",
+				opts = {
+					enable = true,
+					max_lines = 5,
+					min_window_height = 0,
+					line_numbers = true,
+					multiline_threshold = 1,
+					trim_scope = "outer",
+					mode = "cursor",
+					separator = "",
+					zindex = 20,
+				},
+			},
+		},
 	},
-    { "windwp/nvim-ts-autotag", event = "InsertEnter", dependencies = "nvim-treesitter/nvim-treesitter"},
 }

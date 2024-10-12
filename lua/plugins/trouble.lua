@@ -1,12 +1,12 @@
-local function keys()
-    local trouble = require("trouble")
-    return {
-        { "<leader>tt", function() trouble.toggle("diagnostics") end },
-    }
+local function config()
+	local trouble = require("trouble")
+	vim.keymap.set("n", "<leader>tt", function() trouble.toggle("diagnostics") end)
 end
 
 return {
 	"folke/trouble.nvim",
-	config = true,
-	keys = keys,
+	config = config,
+	keys = {
+		"<leader>tt",
+	},
 }

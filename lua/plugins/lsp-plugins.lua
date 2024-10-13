@@ -4,7 +4,6 @@ local function lsp_config()
 
 	local default_setups = {
 		"ts_ls",
-		-- "eslint",
 		"tailwindcss",
 		"emmet_language_server",
 		"gopls",
@@ -59,8 +58,6 @@ end
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf, remap = false }
-
-		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)

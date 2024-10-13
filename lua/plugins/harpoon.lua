@@ -1,5 +1,3 @@
-local toggle_opts = { ui_width_ratio = vim.api.nvim_win_get_width(0), uijk }
-
 local opts = {
 	settings = { save_on_toggle = true },
 }
@@ -7,9 +5,7 @@ local opts = {
 local function config()
 	local harpoon = require("harpoon")
 
-	-- REQUIRED
 	harpoon:setup(opts)
-	-- REQUIRED
 
 	vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 	vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)

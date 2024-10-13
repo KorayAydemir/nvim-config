@@ -89,8 +89,7 @@ return {
 			{
 				"Dynge/gitmoji.nvim",
 				opts = {
-                    -- makes it work on all filetypes instead of only commits
-					filetypes = {},
+					filetypes = { "gitcommit" },
 				},
 			},
 			{

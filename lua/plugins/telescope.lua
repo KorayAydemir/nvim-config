@@ -1,6 +1,5 @@
-local function keys()
+local function set_keys()
 	local builtin = require("telescope.builtin")
-	local themes = require("telescope.themes")
 
 	local showHidden = {
 		hidden = true,
@@ -9,7 +8,6 @@ local function keys()
 	}
 
 	-- C-q puts results in quickfix list
-	local ivy = themes.get_ivy
 
 	-- Search all files in cwd.
 	vim.keymap.set("n", "<leader>pf", function() builtin.find_files(showHidden) end)
@@ -84,7 +82,7 @@ local config = function()
 			layout_config = {
 				width = 300,
 				height = 100,
-                preview_cutoff = 90,
+				preview_cutoff = 90,
 			},
 			cache_picker = {
 				num_pickers = 4,
@@ -108,7 +106,7 @@ local config = function()
 	telescope.load_extension("fzf")
 	telescope.load_extension("undo")
 
-	keys()
+	set_keys()
 
 	require("telescope").setup(opts)
 end
@@ -119,7 +117,7 @@ return {
 		config = config,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-fzf-native.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			"nvim-tree/nvim-web-devicons",
 			"debugloop/telescope-undo.nvim",
 		},
@@ -146,5 +144,4 @@ return {
 			"<C-p>",
 		},
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
 }

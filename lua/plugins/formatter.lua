@@ -91,7 +91,7 @@ return {
 	"mhartington/formatter.nvim",
 	config = config,
 	keys = { {
-		"<leader>fr",
+		"<leader>ff",
 		format_and_save,
 		{ silent = true },
 	} },

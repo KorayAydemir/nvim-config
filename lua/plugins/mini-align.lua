@@ -2,8 +2,14 @@ return {
 	"echasnovski/mini.align",
 	version = "*",
 	config = true,
+	opts = {
+		mappings = {
+			start = "al",
+			start_with_preview = "aL",
+		},
+	},
 	keys = {
-		{ "ga", mode = { "n", "v" } },
-		{ "gA", mode = { "n", "v" } },
+		{ "al", mode = { "n", "v" } },
+		{ "aL", mode = { "n", "v" } },
 	},
 }

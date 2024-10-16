@@ -4,12 +4,12 @@ return {
 	config = true,
 	opts = {
 		mappings = {
-			start = "al",
-			start_with_preview = "aL",
+			start = "<leader>l",
+			start_with_preview = "<leader>L",
 		},
 	},
 	keys = {
-		{ "al", mode = { "n", "v" } },
-		{ "aL", mode = { "n", "v" } },
+		{ "<leader>l", mode = { "n", "v" } },
+		{ "<leader>L", mode = { "n", "v" } },
 	},
 }

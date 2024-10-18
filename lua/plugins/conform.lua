@@ -18,8 +18,8 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			json = { "prettierd", "prettier", stop_after_first = true },
+			javascript = { "prettierd", stop_after_first = true },
+			json = { "prettierd", stop_after_first = true },
 		},
 		-- Set default options
 		-- default_format_opts = {
@@ -30,10 +30,7 @@ return {
 		-- Customize formatters
 		formatters = {
 			prettierd = {
-				prepend_args = { "--tab-width=4", "--print-width=100" },
-			},
-			prettier = {
-				prepend_args = { "--tab-width=4" },
+				prepend_args = { "--tab-width=4", "--print-width=100", "--config-precedence=file-override" },
 			},
 		},
 	},

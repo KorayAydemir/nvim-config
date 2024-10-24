@@ -62,5 +62,3 @@ vim.opt.mousemodel = "extend"
 
 vim.opt.fileformats = "unix,dos"
 vim.opt.fileformat = "unix"
-
-vim.opt.laststatus = 3 -- experimenting

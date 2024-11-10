@@ -15,19 +15,15 @@ return {
 	---@module "conform"
 	---@type conform.setupOpts
 	opts = {
-		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
-			javascript = { "prettierd", stop_after_first = true },
-			json = { "prettierd", stop_after_first = true },
+			javascript = { "prettierd" },
+			json = { "prettierd" },
+            rust = { "rustfmt" },
+            toml = { "taplo" },
+            -- run on filetypes that don't have any formatters configured
+            ["_"] = { "prettierd" }
 		},
-		-- Set default options
-		-- default_format_opts = {
-		-- 	lsp_format = "fallback",
-		-- },
-		-- Set up format-on-save
-		-- format_on_save = { timeout_ms = 500 },
-		-- Customize formatters
 		formatters = {
 			prettierd = {
 				prepend_args = { "--tab-width=4", "--print-width=100", "--config-precedence=file-override" },

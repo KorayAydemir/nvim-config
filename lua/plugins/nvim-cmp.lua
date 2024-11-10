@@ -1,4 +1,4 @@
-local function nvim_cmp_config()
+local function config()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
 
@@ -72,7 +72,7 @@ end
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		config = nvim_cmp_config,
+		config = config,
 		event = "InsertEnter",
 		lazy = true,
 		opts = function(_, opts)

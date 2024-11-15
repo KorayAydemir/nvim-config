@@ -9,7 +9,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>l", mode = { "n", "v" } },
-		{ "<leader>L", mode = { "n", "v" } },
+		{ "<leader>l", mode = { "v" } },
+		{ "<leader>L", mode = { "v" } },
 	},
 }

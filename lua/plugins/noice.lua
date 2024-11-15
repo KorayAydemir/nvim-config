@@ -2,7 +2,7 @@ local function config()
 	require("noice").setup({
 		lsp = {
 			-- hover = { enabled = false },
-			-- signature = { enabled = false },
+			signature = { auto_open = { enabled = false } },
 			-- message = { enabled = false },
 			-- smart_move = { enabled = false },
 			progress = { enabled = false },

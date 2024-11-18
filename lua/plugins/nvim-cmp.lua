@@ -16,9 +16,10 @@ local function config()
 		completion = {
 			completeopt = "menuone,noinsert",
 		},
-        performance = {
-            fetching_timeout = 1
-        },
+        -- using it without this for a while to see if this is needed
+        -- performance = {
+        --     fetching_timeout = 1
+        -- },
 		mapping = cmp.mapping.preset.insert({
 			["S-Tab"] = nil,
 			["<CR>"] = cmp.mapping.confirm({ select = true }),

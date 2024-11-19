@@ -11,7 +11,6 @@ local function config()
 			{ name = "cmp-tw2css" },
             { name = "buffer" },
 			{ name = "path" },
-			{ name = "gitmoji" },
 		},
 		completion = {
 			completeopt = "menuone,noinsert",
@@ -87,12 +86,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
-			{
-				"Dynge/gitmoji.nvim",
-				opts = {
-					filetypes = { "gitcommit" },
-				},
-			},
 			{
 				"jcha0713/cmp-tw2css",
 				opts = {

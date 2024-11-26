@@ -4,7 +4,7 @@ return {
 	config = true,
 	opts = {
 		mappings = {
-			start = "<leader>a",
+			start = "<leader>x",
 			start_with_preview = "<leader>L",
 		},
 	},

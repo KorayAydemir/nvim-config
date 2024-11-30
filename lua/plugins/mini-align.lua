@@ -5,11 +5,11 @@ return {
 	opts = {
 		mappings = {
 			start = "<leader>x",
-			start_with_preview = "<leader>L",
+			start_with_preview = "<leader>X",
 		},
 	},
 	keys = {
-		{ "<leader>a", mode = { "v" } },
-		{ "<leader>L", mode = { "v" } },
+		{ "<leader>x", mode = { "v" } },
+		{ "<leader>X", mode = { "v" } },
 	},
 }

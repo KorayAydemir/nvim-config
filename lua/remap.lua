@@ -30,7 +30,8 @@ vim.keymap.set("t", "<C-[>", "<C-\\><C-N>", {})
 vim.keymap.set("n", "<leader>pa", "<cmd>:let @+=@%<CR>")
 
 -- full path
---:let @+ = expand("%:p")
+vim.keymap.set("n", "<leader>pA", '<cmd>:let @+ = expand("%:p")<CR>')
+
 
 -- just filename
 --:let @+ = expand("%:t")
@@ -39,3 +40,5 @@ vim.keymap.set("n", "<M-,>", "<c-w>5<")
 vim.keymap.set("n", "<M-.>", "<c-w>5>")
 vim.keymap.set("n", "<M-j>", "<C-W>+")
 vim.keymap.set("n", "<M-k>", "<C-W>-")
+
+vim.keymap.set("n", "<Leader>;", function() vim.cmd("up") end)

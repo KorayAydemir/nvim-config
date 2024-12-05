@@ -32,7 +32,6 @@ vim.keymap.set("n", "<leader>pa", "<cmd>:let @+=@%<CR>")
 -- full path
 vim.keymap.set("n", "<leader>pA", '<cmd>:let @+ = expand("%:p")<CR>')
 
-
 -- just filename
 --:let @+ = expand("%:t")
 
